@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <Button
+        android:layout_width="match_parent"
+        android:text="abrir"
+        android:id="@+id/abrir"
+        android:layout_height="wrap_content" />
+    <!-- include app bar -->
+
+    <!-- include main content -->
+    <include layout="@layout/content" />
+    <!--<include layout="@layout/card" />-->
+
+    <!-- include bottom sheet -->
+
+</android.support.design.widget.CoordinatorLayout>

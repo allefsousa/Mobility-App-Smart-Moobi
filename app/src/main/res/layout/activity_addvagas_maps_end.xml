@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.developer.allef.projetomobile.View.MapsEnd">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inpEnd"
+        android:layout_below="@+id/toolbarEnd"
+       >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edEndereco"
+            android:hint="Endereço"
+            android:inputType="textAutoComplete"
+            android:maxLines="1"
+            tools:ignore="HardcodedText" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:layout_below="@+id/inpEnd"
+        android:id="@+id/inpNumero"
+       android:gravity="center"
+        tools:ignore="RtlHardcoded">
+
+        <EditText
+            android:id="@+id/edNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="N°"
+            android:nextFocusDown="@+id/spEstado"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="HardcodedText" />
+    </android.support.design.widget.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/spEstado"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:nextFocusDown="@+id/edCidade"
+            android:layout_below="@+id/inpNumero"
+            android:spinnerMode="dropdown" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/enCidade"
+            android:layout_below="@+id/spEstado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+
+            <EditText
+
+                android:id="@+id/edCidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Cidade"
+                android:inputType="text"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spstilo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_below="@id/enCidade"
+        android:spinnerMode="dropdown" />
+
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spstilo"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cantosrendondos"
+        android:id="@+id/btnbuscar"
+        android:text="@string/btnBuscarcity"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/listend"
+        android:layout_below="@+id/btnbuscar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

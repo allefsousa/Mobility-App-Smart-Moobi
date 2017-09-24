@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.developer.allef.projetomobile.View.EmailLogin">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/ima"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher_round"
+        />
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ima"
+        android:id="@+id/inpEmail">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtEmail"
+            android:hint="Email" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleContentDescription="@string/description"
+        app:passwordToggleEnabled="true"
+        android:id="@+id/inpSenha"
+        android:layout_below="@id/inpEmail"
+        app:passwordToggleTint="@color/colorAccent">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtSenha"
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/criarcontaEmail"
+        android:layout_marginTop="26dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/criarconta"
+        android:layout_below="@+id/inpSenha" />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/btnlogin"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="26dp"
+        android:textColor="@color/Branco"
+        android:textSize="18sp"
+        android:layout_below="@+id/criarcontaEmail"
+        app:cpb_selectorIdle="@drawable/button"
+        app:cpb_iconComplete="@drawable/ic_check"
+        app:cpb_cornerRadius="120dp"
+        app:cpb_iconError="@drawable/ic_cross"
+        app:cpb_textError="erro"
+        app:cpb_textIdle="Sing In" />
+
+
+</RelativeLayout>

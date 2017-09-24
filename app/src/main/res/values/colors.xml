@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#576ff9</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="Primary_light">#C5CAE9</color>
+    <color name="colorAccent">#00BCD4</color>
+    <color name="primary_text">#040404</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="introback">#311E76</color>
+    <color name="introbutton">#F19600</color>
+    <color name="Splashcolor">#7EC0D8</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="Branco">#FFFFFF</color>
+    <color name="Introcolor">#05141c</color>
+    <color name="facebook_blue">#464F99</color>
+
+    <color name="rotaprincipal">#d50000</color>
+    <color name="rotaAlternativa">#7f31c7c5</color>
+    <color name="rotaAlternativa2">#7fff8a00</color>
+    <!-- cores abaixo representao o progressButton do Login com Email e Senha-->
+    <color name="cpb_blue_dark">#002f85</color>
+    <color name="cpb_grey">#6e7d85</color>
+    <color name="white_transparent">#08304b</color>
+    <color name="cpb_blue">#0062ff</color>
+    <color name="splashcc">#7CBFD8</color>
+
+
+    <color name="introIdosoBacgraund">#575DFF</color>
+    <color name="introCadeiranteBancground">#3F51B5</color>
+
+
+    <!--<color name="primary">#FFEB3B</color>-->
+    <!--<color name="primary_dark">#FBC02D</color>-->
+    <!--<color name="primary_light">#FFF9C4</color>-->
+    <!--<color name="accent">#607D8B</color>-->
+    <!--<color name="primary_text">#212121</color>-->
+    <!--<color name="secondary_text">#757575</color>-->
+    <!--<color name="icons">#212121</color>-->
+    <!--<color name="divider">#BDBDBD</color>-->
+    <color name="primaryColor">#08304b</color>
+    <color name="primaryLightColor">#3a5977</color>
+    <color name="primaryDarkColor">#000623</color>
+    <color name="secondaryColor">#dde2e3</color>
+    <color name="secondaryLightColor">#ffffff</color>
+    <color name="secondaryDarkColor">#abb0b1</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+</resources>
