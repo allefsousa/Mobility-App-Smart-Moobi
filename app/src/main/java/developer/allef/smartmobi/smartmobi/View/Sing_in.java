@@ -83,7 +83,7 @@ public class Sing_in extends AppCompatActivity implements GoogleApiClient.OnConn
          * neste caso apenas o email
          */
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.id_Auth_GoogleServer))
+                .requestIdToken(getString(R.string.id_Auth_GoogleServerDEBUGg))
                 .requestEmail()
                 .build();
 

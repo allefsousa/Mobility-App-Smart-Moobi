@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "349097425170-rdms9qva5epsqojfrceqqaimclde7aqp.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.developer.allef.projetomobile",
-            "certificate_hash": "5ccbd5e2388d8f415afaccb4a5d1e2f8161ad5d8"
-          }
-        },
-        {
           "client_id": "349097425170-rjsh74qchihegcgnad19n9qb6rt5msp4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -31,27 +23,11 @@
           }
         },
         {
-          "client_id": "349097425170-ee7konoi2tnic3bh5nd0edlbboj379jr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.developer.allef.projetomobile",
-            "certificate_hash": "02923f1695462b13afd05ce20cb7a8075d1b4500"
-          }
-        },
-        {
           "client_id": "349097425170-8ifjcjbgn13mn7384bcffef34tu27lug.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.developer.allef.projetomobile",
             "certificate_hash": "ab68d251ceb0332b2edb1ec4eafec6aa99329d48"
-          }
-        },
-        {
-          "client_id": "349097425170-1iel7edkbpp4jpe5uof9v0uhg9e7pgg8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.developer.allef.projetomobile",
-            "certificate_hash": "779e2d8d95547b3cc19161601e9216954b3e103f"
           }
         },
         {
@@ -107,6 +83,70 @@
       },
       "oauth_client": [
         {
+          "client_id": "349097425170-b2iaqka99pf6kra3a8tvcjd1puc3uc9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "e9a924f274ceff0578dd10dd80bc5649490d227f"
+          }
+        },
+        {
+          "client_id": "349097425170-hnhmt2fa06dpcu6g6livcgk68dbsbk7l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "0b4d57d94f18d225425cad55781424c20753ee88"
+          }
+        },
+        {
+          "client_id": "349097425170-u1o8im4csl2n0pqccjjjm4n9dr8joptg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "69a0afceaa55ebaffafddcb69521fa8db902db15"
+          }
+        },
+        {
+          "client_id": "349097425170-d2j67pr8du2vpg2drd05iglk61vuf689.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "779e2d8d95547b3cc19161601e9216954b3e103f"
+          }
+        },
+        {
+          "client_id": "349097425170-kldsu3c5ho363vns911gkcpqslnr44fo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "ab68d251ceb0332b2edb1ec4eafec6aa99329d48"
+          }
+        },
+        {
+          "client_id": "349097425170-ijp2i1aurb1ruk2n8h65vbi4c1rotcg7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "02923f1695462b13afd05ce20cb7a8075d1b4500"
+          }
+        },
+        {
+          "client_id": "349097425170-at8bchjqi56njflkinm48q78i6dtdp5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "0c0d32586771a5a09cea41f6191ebce04e234ff3"
+          }
+        },
+        {
+          "client_id": "349097425170-1ren5sktiq3g5fvrecqkukoed8dp1oeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "5ccbd5e2388d8f415afaccb4a5d1e2f8161ad5d8"
+          }
+        },
+        {
           "client_id": "349097425170-kc8nlqccdnbfdut5rver3r2cd230gs75.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -121,8 +161,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349097425170-kc8nlqccdnbfdut5rver3r2cd230gs75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

@@ -67,6 +67,9 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceLikelihood;
+import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -792,9 +795,8 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.config) {
            // startActivity(new Intent(context, PlaceAdress.class));
 
-        }
-        // }
-        if (id == R.id.singout) {
+        }else if(id == R.id.singout){
+            startActivity(new Intent(context,Sing_in.class));
             mAuth.signOut();
             finish();
 
@@ -808,24 +810,8 @@ public class MenuActivity extends AppCompatActivity
                     }
                 }
             });
-
-            //  startActivity(new Intent(MenuActivity.this,SplashActivity.class));
-            //  finish();
-
-
         }
 
-
-
-
-/*
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -1075,6 +1061,7 @@ public class MenuActivity extends AppCompatActivity
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+
         mgoogleMap.setMyLocationEnabled(true);
 
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -1144,66 +1131,66 @@ public class MenuActivity extends AppCompatActivity
         mgoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mOrigen, 16.0f));
         mgoogleMap.clear();
         addmMarker();
-        mgoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(context, "Olha noia akii", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        mgoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+//            @Override
+//            public void onInfoWindowClick(Marker marker) {
+//                Toast.makeText(context, "Olha noia akii", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         mgoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
 
 
-//                atualizarMapa();
-//                positionMarker = marker.getPosition();
-//
-//                // RECUPERANDO O ID  DA VAGA CLICADA PARA VERIFICAR A DISPONIBILIDADE
-//                for (LocalVaga v : arrayLocal) {
-//                    if (v.getLatitude().equals(marker.getPosition().latitude) && v.getLongitude().equals(marker.getPosition().longitude)) {
-//                        keyupdateVaga = v.getId();
-//
-//                    }
-//                }
-//
-//                if (marker.getSnippet() != null) { // validando o clik no  indicador da Localização
-//
-//                    switch (marker.getSnippet()) {
-//                        case "idoso":
-//                            tipoV.setText("Vaga Preferencial Idoso");
-//                            StatusVaga.setVisibility(View.VISIBLE);
-//                            break;
-//                        case "rampa":
-//                            tipoV.setText("Rampa Acessivel");
-//                            StatusVaga.setVisibility(View.INVISIBLE);
-//                            break;
-//                        case "vaga":
-//                            tipoV.setText("Vaga Automovel Preferencial");
-//                            StatusVaga.setVisibility(View.VISIBLE);
-//                            break;
-//                    }
-//
-//                    boolean isOn;
-//                    isOn = verificaConexao();
-//
-//                    if (isOn) {
-//                        OriginBD = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
-//                        progressBar.setVisibility(View.VISIBLE);
-//                        progressBar.setProgress(50);
-//                        km.setText("Distancia :");
-//                        tempoPercurso.setText("Tempo Duração :");
-//                        fab.hide();
-//                        bottomSheetBehavior.setPeekHeight(115);
-//                        requestDirection();
-//                        return true;
-//                    } else {
-//
-//
-//                    }
-//                }
-//
-//
+                atualizarMapa();
+                positionMarker = marker.getPosition();
+
+                // RECUPERANDO O ID  DA VAGA CLICADA PARA VERIFICAR A DISPONIBILIDADE
+                for (LocalVaga v : arrayLocal) {
+                    if (v.getLatitude().equals(marker.getPosition().latitude) && v.getLongitude().equals(marker.getPosition().longitude)) {
+                        keyupdateVaga = v.getId();
+
+                    }
+                }
+
+                if (marker.getSnippet() != null) { // validando o clik no  indicador da Localização
+
+                    switch (marker.getSnippet()) {
+                        case "idoso":
+                            tipoV.setText("Vaga Preferencial Idoso");
+                            StatusVaga.setVisibility(View.VISIBLE);
+                            break;
+                        case "rampa":
+                            tipoV.setText("Rampa Acessivel");
+                            StatusVaga.setVisibility(View.INVISIBLE);
+                            break;
+                        case "vaga":
+                            tipoV.setText("Vaga Automovel Preferencial");
+                            StatusVaga.setVisibility(View.VISIBLE);
+                            break;
+                    }
+
+                    boolean isOn;
+                    isOn = verificaConexao();
+
+                    if (isOn) {
+                        OriginBD = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+                        progressBar.setVisibility(View.VISIBLE);
+                        progressBar.setProgress(50);
+                        km.setText("Distancia :");
+                        tempoPercurso.setText("Tempo Duração :");
+                        fab.hide();
+                        bottomSheetBehavior.setPeekHeight(115);
+                        requestDirection();
+                        return true;
+                    } else {
+
+
+                    }
+                }
+
+
                 return false;
             }
         });

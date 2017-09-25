@@ -3,9 +3,11 @@
     <string name="API_KEY">AIzaSyAo7GDKF2kQwdplXJQXaCRnCmjkS1q3e6Q</string>
     <string name="API_KEeY">AIzaSyAo7GDKF2kQwdplXJQXaCRnCmjkS1q3e6Q</string>
     <string name="SERVERKEY">AIzaSyDZXFJdyZMxszS5mFPQ4GCpSDK6sf0OAhQ</string>
-    <string name="id_Auth_GoogleServer">349097425170-kc8nlqccdnbfdut5rver3r2cd230gs75.apps.googleusercontent.com</string>
-    <string name="facebook_app_id">117974928797421</string>
+    <string name="id_Auth_GoogleServerDEBUG">349097425170-1ren5sktiq3g5fvrecqkukoed8dp1oeh.apps.googleusercontent.com</string>
+    <string name="id_Auth_GoogleServerDEBUGg">349097425170-kc8nlqccdnbfdut5rver3r2cd230gs75.apps.googleusercontent.com</string>
+    <string name="id_Auth_GoogleServerRELEASE">349097425170-b2iaqka99pf6kra3a8tvcjd1puc3uc9i.apps.googleusercontent.com</string>
 
+    <string name="facebook_app_id">117974928797421</string>
     <string name="fb_login_protocol_scheme">fb117974928797421</string>
 
     <string name="title_activity_menu">Maps</string>

@@ -1,16 +1,25 @@
 package developer.allef.smartmobi.smartmobi.View;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.PlaceLikelihood;
+import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
+import com.google.android.gms.location.places.Places;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.perf.FirebasePerformance;
@@ -20,6 +29,7 @@ import com.google.firebase.perf.metrics.Trace;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import developer.allef.smartmobi.smartmobi.R;
+import io.fabric.sdk.android.Fabric;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -31,7 +41,6 @@ public class SplashActivity extends AppCompatActivity {
     TextView sph;
 
 
-
     FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener authStateListener;
     @BindView(R.id.sph)
@@ -40,6 +49,7 @@ public class SplashActivity extends AppCompatActivity {
     // instancia do Firebase Performase
     @Override
     @AddTrace(name = "onCreateTrace", enabled = true/*Optional*/)
+
 
     /**
      * meto criado junto com a viem
@@ -52,13 +62,12 @@ public class SplashActivity extends AppCompatActivity {
 
 
         // instacia da ferramenta de erros
-       // instancia do firebase
+        // instancia do firebase
         firebaseAuth = FirebaseAuth.getInstance();
 
 
         Typeface typeface = Typeface.createFromAsset(this.getAssets(), "laconicregular.otf");
         sph.setTypeface(typeface);
-
 
 
 //        FirebaseDatabase.getInstance().setPersistenceEnabled(true);// INSTANCIA DO FIREBASE PARA FUNCIONAR OFFLINE
@@ -83,11 +92,10 @@ public class SplashActivity extends AppCompatActivity {
         startAnimation();
 
 
-
     }
+
     // tempo de pausa da Splsh Screem
     private void startAnimation() {
-
 
 
         splashTread = new Thread() {
@@ -110,11 +118,11 @@ public class SplashActivity extends AppCompatActivity {
                      */
                     if (firebaseUser != null) {
                         Intent i = new Intent(SplashActivity.this, MenuActivity.class); // TODO: 12/07/2017 preciso encontrar uma forma da animação para para nao pular a permisão do GPs pode ser considerado mudar a validação para a classe de login
-                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION );
                         startActivity(i);
                     } else {
                         Intent i = new Intent(SplashActivity.this, Sing_in.class); // TODO: 12/07/2017 preciso encontrar uma forma da animação para para nao pular a permisão do GPs pode ser considerado mudar a validação para a classe de login
-                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION );
                         startActivity(i);
                     }
 
@@ -142,6 +150,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onResume();
         // removendo o ouvinte de Autenticação
         firebaseAuth.addAuthStateListener(authStateListener);
+
 
     }
 
