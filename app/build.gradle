@@ -21,7 +21,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "developer.allef.smartmobi.smartmobi"
+        applicationId "developer.allef.smartmobi.smartmobii"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 2
@@ -41,6 +41,15 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    /* animacao*/
+
+    compile 'com.android.support:support-compat:26.+'
+    compile 'com.daimajia.easing:library:2.0@aar'
+    compile 'com.daimajia.androidanimations:library:2.3@aar'
+
+
+
     compile 'com.android.support:design:26.+'
     compile 'com.google.android.gms:play-services-maps:11.0.0'
     compile 'com.google.android.gms:play-services-location:11.0.0'

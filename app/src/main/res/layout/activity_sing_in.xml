@@ -4,19 +4,28 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-
+    android:background="@drawable/sna"
     android:orientation="vertical"
     android:weightSum="1">
+    <TextView
+        android:id="@+id/nomeapp"
+        android:layout_width="match_parent"
+        android:text="Smart Mobi"
+        android:layout_below="@+id/tituloSing"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/Branco"
+        android:textSize="40dp"
+        android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:text="Bem Vindo Ao Smart Mobi faça o login"
+        android:id="@+id/tituloSing"
+        android:text="Bem Vindo ao "
         android:layout_width="match_parent"
+        android:gravity="center"
         android:textColor="@android:color/white"
-        android:fontFamily="sans-serif-smallcaps"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:textSize="20dp"
         android:layout_height="wrap_content" />
 
@@ -26,40 +35,66 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="140dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_marginBottom="132dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <Button
             android:id="@+id/btnsms"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/Branco"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:drawableLeft="@drawable/phone"
-            android:text="Sing in com Telefone"
-            android:textColor="@android:color/black"
+            android:layout_height="60dp"
+            android:background="@drawable/cantosrendondos"
+            style="@style/AppTheme.BlockButton"
+            android:drawableLeft="@mipmap/ico"
+            android:text="Entrar com Telefone"
+            android:textColor="@color/primary_text"
             android:layout_below="@+id/textView2" />
 
-
-
-        <com.google.android.gms.common.SignInButton
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_below="@id/btnsms"
-            android:id="@+id/googlebutton"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="50dp"></com.google.android.gms.common.SignInButton>
+            android:orientation="horizontal">
+            <Button
+                style="@style/AppTheme.GoogleBlockButton"
+                android:layout_width="124dp"
+                android:layout_below="@id/btnsms"
+                android:id="@+id/googlebutton"
+                android:text="Entrar com Google"
+                android:background="@drawable/cantosrendondos"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.05"
+                android:layout_height="60dp"/>
 
-        <Button
-            android:id="@+id/btnfacebook"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+
+            <Button
+                android:id="@+id/btnfacebook"
+                style="@style/AppTheme.FacebookBlockButton"
+                android:layout_width="124dp"
+                android:background="@drawable/cantosrendondosface"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.05"
+                android:text="Entrar com Facebook"
+                android:textColor="@color/Branco" />
+
+
+        </LinearLayout>
+
+        <TextView
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/facebook_blue"
-            android:drawableLeft="@drawable/com_facebook_button_icon"
-            android:text="Login com Facebook"
-            android:textColor="@color/Branco" />
+            android:id="@+id/criarconta"
+            android:textColor="@color/Branco"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:text="Criar Uma Conta."
+            android:layout_height="wrap_content" />
+
+
+
 
 
     </LinearLayout>

@@ -13,7 +13,11 @@
     <color name="divider">#BDBDBD</color>
     <color name="Branco">#FFFFFF</color>
     <color name="Introcolor">#05141c</color>
+
     <color name="facebook_blue">#464F99</color>
+    <color name="google_button">#af0808</color>
+    <color name="fundoButton">#38C6D9</color>
+
 
     <color name="rotaprincipal">#d50000</color>
     <color name="rotaAlternativa">#7f31c7c5</color>

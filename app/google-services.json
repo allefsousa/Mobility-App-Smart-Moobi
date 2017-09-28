@@ -83,6 +83,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "349097425170-0u1qofiulhp7ceip98tc1r5f824lnhmv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "developer.allef.smartmobi.smartmobi",
+            "certificate_hash": "25168713406d0410475eb9a59012eb3ee9d49b95"
+          }
+        },
+        {
           "client_id": "349097425170-b2iaqka99pf6kra3a8tvcjd1puc3uc9i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -168,6 +176,37 @@
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349097425170:android:be09f988639f5972",
+        "android_client_info": {
+          "package_name": "developer.allef.smartmobi.smartmobii"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349097425170-kc8nlqccdnbfdut5rver3r2cd230gs75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo7GDKF2kQwdplXJQXaCRnCmjkS1q3e6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

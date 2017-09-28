@@ -51,6 +51,26 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="AppTheme.FacebookBlockButton" parent="AppTheme.BlockButton">
+        <item name="android:background">@color/facebook_blue</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
+        <item name="android:textColor">@color/Branco</item>
+    </style>
+
+    <style name="AppTheme.GoogleBlockButton" parent="AppTheme.BlockButton">
+        <item name="android:background">@color/Branco</item>
+        <item name="android:drawableLeft">@drawable/googleg_standard_color_18</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="AppTheme.BlockButton">
+        <item name="android:textSize">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
 
 
     <style name="AppTheme.OverlayToolbar" parent="AppThemeToolbar">
