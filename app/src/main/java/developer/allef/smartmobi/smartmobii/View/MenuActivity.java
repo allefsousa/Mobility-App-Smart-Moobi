@@ -97,6 +97,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import developer.allef.smartmobi.smartmobii.Helper.monitorHora;
 import developer.allef.smartmobi.smartmobii.Model.LocalVaga;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
+import developer.allef.smartmobi.smartmobii.PlaceAdress;
 import developer.allef.smartmobi.smartmobii.PlacePickeeer;
 import developer.allef.smartmobi.smartmobii.R;
 
@@ -298,6 +299,8 @@ public class MenuActivity extends AppCompatActivity
 
 
 
+
+
             }
         });
 
@@ -411,6 +414,7 @@ public class MenuActivity extends AppCompatActivity
         initBottomSheet();
 
     }
+
 
     private void checkBoxClick(View view) {
         boolean checked = ((CheckBox) view).isChecked();
@@ -770,6 +774,7 @@ public class MenuActivity extends AppCompatActivity
             super.onBackPressed();
         }
 
+
     }
 
 
@@ -790,7 +795,17 @@ public class MenuActivity extends AppCompatActivity
             startActivity(new Intent(context, FeedActivity.class));
 
         } else if (id == R.id.config) {
-           // startActivity(new Intent(context, PlaceAdress.class));
+            startActivity(new Intent(context, PlaceAdress.class));
+
+        }else if(id ==R.id.entrarcontato ) {
+
+        }else if (id == R.id.sobre) {
+
+
+        }else if (id == R.id.politica){
+            Intent i = new Intent(context, webViewPoliticaActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
 
         }else if(id == R.id.singout){
             startActivity(new Intent(context,Sing_in.class));
@@ -953,6 +968,7 @@ public class MenuActivity extends AppCompatActivity
 
 
     }
+
 
 
     private void setSelectedStyle(int i) {

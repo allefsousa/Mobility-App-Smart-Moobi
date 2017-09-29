@@ -1,55 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/funcionalidadesapp"
+        android:checkableBehavior="single">
 
-<!--mudar que esta orivel-->
-    <group android:checkableBehavior="single">
-        <item android:title="Adicionar Acessibilidade ">
-            <menu>
-
-
-                <item
-                    android:id="@+id/navmapslvagas"
-                    android:icon="@drawable/ic_my_location"
-                    android:title="@string/feed" />
-                <item
-                    android:id="@+id/nav_camera"
-                    android:icon="@drawable/ic_map"
-                    android:title="@string/AdicionarvagasEnd" />
-
-
-
-            </menu>
-
-        </item>
-    </group>
-    <item android:title="Detalhes do App">
-        <menu>
-            <!--<item-->
-                <!--android:id="@+id/quempode"-->
-                <!--android:icon="@drawable/ic_clipboard"-->
-                <!--android:title="Quem Pode utilizar " />-->
-
-            <item
-                android:id="@+id/sobre"
-                android:icon="@drawable/ic_code"
-                android:title="Sobre" />
-
-            <item
-                android:id="@+id/config"
-                android:icon="@drawable/ic_cog"
-                android:title="Configurações" />
-
-
-        </menu>
-
-
-    </item>
     <item
-        android:id="@+id/singout"
-        android:icon="@drawable/ic_exit"
-        android:title="Sair" />
+        android:titleCondensed="recuros"
+        android:id="@+id/navmapslvagas"
+        android:icon="@drawable/ic_list_alt"
+        android:title="@string/feed" />
+    <item
+        android:id="@+id/nav_camera"
+        android:icon="@drawable/ic_android_pin"
+        android:title="@string/AdicionarvagasEnd" />
+
+
+    <item
+        android:id="@+id/config"
+        android:icon="@drawable/ic_cog"
+        android:title="Configurações" />
+    </group>
+
+    <group android:id="@+id/appsobre"
+
+        android:checkableBehavior="none">
 
 
 
-</menu>
+        <item
+            android:id="@+id/entrarcontato"
+            android:icon="@drawable/ic_email"
+            android:title="Entrar em contato" />
+        <item
+            android:id="@+id/sobre"
+            android:icon="@drawable/ic_people"
+            android:title="Sobre" />
+        <item
+            android:id="@+id/politica"
+            android:icon="@drawable/ic_lock_outline"
+            android:title="Politica de privacidade" />
+
+
+        <item
+            android:id="@+id/singout"
+            android:icon="@drawable/ic_exit"
+            android:title="Sair" />
+
+
+    </group>
+
+    </menu>
+
+
+
+
+
+
+
+
 

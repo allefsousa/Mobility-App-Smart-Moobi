@@ -43,7 +43,7 @@
 
     <string name="title_activity_adicionar_marcador">adicionarMarcador</string>
     <string name="AdicionarvagasMaps">Localização atual</string>
-    <string name="AdicionarvagasEnd">Localização Endereço</string>
+    <string name="AdicionarvagasEnd">Adicionar Local</string>
     <string name="addlocalização">Enviar Localização Atual</string>
     <string name="rotas">Rotas</string>
     <string name="title_activity_main">MainActivity</string>
@@ -133,7 +133,11 @@
     <string name="AuthTextbuttom">Verificar</string>
     <string name="AuthTextbuttomEnviar">Enviar Codigo</string>
     <string name="AuthTelefoneReenviar">Reenviar</string>
-    <string name="feed">Feed</string>
+    <string name="feed">Time Line</string>
     <string name="Phone_Auth_descricao">Informe o numero de seu celular corretamente</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

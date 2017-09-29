@@ -20,7 +20,7 @@
         android:maxSdkVersion="25" />
 
     <application
-        android:name="developer.allef.smartmobi.smartmobii.View.application"
+        android:name=".View.application"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/compass"
@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.SplashActivity"
+            android:name=".View.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme">
             <intent-filter>
@@ -80,64 +80,46 @@
         </provider>
 
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.MenuActivity"
+            android:name=".View.MenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.OverlayToolbar" />
-        <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.MapsEnd"
-            android:parentActivityName="developer.allef.smartmobi.smartmobii.View.MenuActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.OverlayToolbar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
-        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="5b1a3a1782177eadc628bba4903e798080ae5d22" />
 
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.AddVagasLocalizacaoAtual"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.OverlayToolbar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
-        </activity>
-        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.Sing_in"
+            android:name=".View.Sing_in"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="developer.allef.smartmobi.smartmobii.View.PhoneAuthActivity" />
+        <activity android:name=".View.PhoneAuthActivity" />
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.IntroActivity"
+            android:name=".View.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Intro" />
-        <activity android:name="developer.allef.smartmobi.smartmobii.TestSingInGoogle" />
+        <activity android:name=".TestSingInGoogle" />
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.EmailCadastro"
+            android:name=".View.EmailCadastro"
             android:theme="@style/AppTheme.OverlayToolbar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="developer.allef.smartmobi.smartmobii.View.EmailLogin" />
         </activity>
-        <activity android:name="developer.allef.smartmobi.smartmobii.View.EmailLogin" />
+        <activity android:name=".View.EmailLogin" />
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.PlacePickeeer"
-            android:screenOrientation="portrait"
-            >
+            android:name=".PlacePickeeer"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
         </activity>
-        <activity android:name="developer.allef.smartmobi.smartmobii.PlaceAdress" />
+        <activity android:name=".PlaceAdress" />
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.NewPostActivity"
+            android:name=".View.NewPostActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.OverlayToolbar">
             <meta-data
@@ -145,13 +127,13 @@
                 android:value="developer.allef.smartmobi.smartmobii.View.FeedActivity" />
         </activity>
         <activity
-            android:name="developer.allef.smartmobi.smartmobii.View.FeedActivity"
+            android:name=".View.FeedActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
         </activity>
-
+        <activity android:name=".View.webViewPoliticaActivity"  android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
