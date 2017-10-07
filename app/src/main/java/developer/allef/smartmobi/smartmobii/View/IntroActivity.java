@@ -102,7 +102,6 @@ public class IntroActivity extends MaterialIntroActivity {
                             .buttonsColor(R.color.colorAccent)
                             .possiblePermissions(arrayPer)
                             .neededPermissions(arrayPer)
-                            .image(R.drawable.intro)
                             .title("Permisões")
                             .description("Para Um melhor desempenho é necessarios habilitar alguns recursos do dispositivo.")
                             .build(),

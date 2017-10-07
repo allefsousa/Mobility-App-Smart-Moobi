@@ -1,5 +1,6 @@
 package developer.allef.smartmobi.smartmobii.View;
 
+import android.net.Uri;
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +20,8 @@ import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import developer.allef.smartmobi.smartmobii.Model.Usuario;
 import developer.allef.smartmobi.smartmobii.R;
 
 /**
@@ -29,7 +32,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     SortedList<DataSnapshot> dataset = new SortedList<DataSnapshot>(DataSnapshot.class, new SortedList.Callback<DataSnapshot>() {
         @Override
         public int compare(DataSnapshot data1, DataSnapshot data2) {
-            return (int)(data2.child("createdAt").getValue(Long.class) - data1.child("createdAt").getValue(Long.class));
+            return (int) (data2.child("createdAt").getValue(Long.class) - data1.child("createdAt").getValue(Long.class));
         }
 
         @Override
@@ -63,108 +66,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         }
     });
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        DatabaseReference likedRef;
-        ValueEventListener likeValueEventListener;
-
-        TextView textView;
-        ImageView imageView;
-        ImageView likeImageView;
-        TextView likesCountTextView;
-        public ViewHolder(View v) {
-            super(v);
-            textView = (TextView) v.findViewById(R.id.comment);
-            imageView = (ImageView) v.findViewById(R.id.image);
-            likeImageView = (ImageView) v.findViewById(R.id.like);
-            likesCountTextView = (TextView) v.findViewById(R.id.likes_count);
-        }
-        public void reset() {
-            if (likedRef != null) likedRef.removeEventListener(likeValueEventListener);
-            textView.setText("");
-            imageView.setImageResource(R.drawable.placeholder);
-            likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-            likesCountTextView.setText("");
-        }
-
-        public void render(DataSnapshot dataSnapshot) {
-            textView.setText(dataSnapshot.child("comment").getValue(String.class));
-            Picasso.with(itemView.getContext())
-                    .load(dataSnapshot.child("image").getValue(String.class))
-                    .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.placeholder)
-                    .into(imageView);
-
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-            int likesCount = dataSnapshot.child("likesCount").getValue(Integer.class);
-            if (likesCount > 0) {
-                likesCountTextView.setText("" + likesCount);
-            }
-
-            likedRef = FirebaseDatabase.getInstance().getReference("post_likes/" + userId + "/" + dataSnapshot.getKey());
-            likeValueEventListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(final DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists() && dataSnapshot.getValue(Boolean.class)) {
-                        likeImageView.setImageResource(R.drawable.ic_favorite_black_24dp);
-                        likeImageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("posts/" + dataSnapshot.getKey() + "/likesCount");
-                                postLikesCountRef.runTransaction(new Transaction.Handler() {
-                                    @Override
-                                    public Transaction.Result doTransaction(MutableData mutableData) {
-                                        likedRef.setValue(false);
-                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) - 1);
-                                        return null;
-                                    }
-                                    @Override
-                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                                    }
-                                });
-                            }
-                        });
-
-                    }
-                    else {
-                        likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-                        likeImageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("posts/" + dataSnapshot.getKey() + "/likesCount");
-                                postLikesCountRef.runTransaction(new Transaction.Handler() {
-                                    @Override
-                                    public Transaction.Result doTransaction(MutableData mutableData) {
-                                        likedRef.setValue(true);
-                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) + 1);
-                                        return null;
-                                    }
-                                    @Override
-                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                                    }
-                                });
-                            }
-                        });
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            };
-            likedRef.addValueEventListener(likeValueEventListener);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-
-
-
-
-        }
-    }
     @Override
     public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d("Recycler", "onCreateViewHolder");
@@ -190,5 +91,125 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return dataset.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        DatabaseReference likedRef;
+        ValueEventListener likeValueEventListener;
+        DatabaseReference userRef;
+        ValueEventListener userValueEventListener;
+        Usuario uu = new Usuario();
+        Usuario atualizauu = new Usuario();
+
+        TextView textView;
+        ImageView imageView;
+        ImageView likeImageView;
+        TextView likesCountTextView;
+        CircleImageView fotoperfil;
+        TextView nomeusurio;
+        TextView dataUsuario;
+
+        public ViewHolder(View v) {
+            super(v);
+            textView = (TextView) v.findViewById(R.id.comment);
+            imageView = (ImageView) v.findViewById(R.id.image);
+            likeImageView = (ImageView) v.findViewById(R.id.like);
+            likesCountTextView = (TextView) v.findViewById(R.id.likes_count);
+            fotoperfil = (CircleImageView) v.findViewById(R.id.profile_image_feed);
+            nomeusurio = (TextView) v.findViewById(R.id.feedNome);
+            dataUsuario = (TextView) v.findViewById(R.id.datafeed);
+
+        }
+
+        public void reset() {
+            if (likedRef != null) likedRef.removeEventListener(likeValueEventListener);
+            textView.setText("");
+            imageView.setImageResource(R.drawable.placeholder);
+            likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            likesCountTextView.setText("");
+        }
+
+        public void render(DataSnapshot dataSnapshot) {
+            String userId = (dataSnapshot.child("userId").getValue(String.class));
+            String photouri = (dataSnapshot.child("photoUrl").getValue(String.class));
+
+            textView.setText(dataSnapshot.child("comment").getValue(String.class));
+
+
+            Picasso.with(itemView.getContext())
+                    .load(dataSnapshot.child("image").getValue(String.class))
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder)
+                    .into(imageView);
+
+            Picasso.with(itemView.getContext())
+                    .load(photouri)
+                    .into(fotoperfil);
+
+
+            int likesCount = dataSnapshot.child("likesCount").getValue(Integer.class);
+            if (likesCount > 0) {
+                likesCountTextView.setText("" + likesCount);
+            }
+
+            likedRef = FirebaseDatabase.getInstance().getReference("post_likes/" + userId + "/" + dataSnapshot.getKey());
+            likeValueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(final DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists() && dataSnapshot.getValue(Boolean.class)) {
+                        likeImageView.setImageResource(R.drawable.ic_favorite_black_24dp);
+                        likeImageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("posts/" + dataSnapshot.getKey() + "/likesCount");
+                                postLikesCountRef.runTransaction(new Transaction.Handler() {
+                                    @Override
+                                    public Transaction.Result doTransaction(MutableData mutableData) {
+                                        likedRef.setValue(false);
+                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) - 1);
+                                        return null;
+                                    }
+
+                                    @Override
+                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                                    }
+                                });
+                            }
+                        });
+
+                    } else {
+                        likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                        likeImageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("posts/" + dataSnapshot.getKey() + "/likesCount");
+                                postLikesCountRef.runTransaction(new Transaction.Handler() {
+                                    @Override
+                                    public Transaction.Result doTransaction(MutableData mutableData) {
+                                        likedRef.setValue(true);
+                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) + 1);
+                                        return null;
+                                    }
+
+                                    @Override
+                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            };
+            likedRef.addValueEventListener(likeValueEventListener);
+
+
+
+        }
+
     }
 }

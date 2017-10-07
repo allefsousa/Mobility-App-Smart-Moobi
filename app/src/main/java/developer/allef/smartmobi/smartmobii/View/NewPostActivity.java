@@ -38,15 +38,18 @@ public class NewPostActivity extends AppCompatActivity {
     private File tempFile = null;
     private File cropTempFile = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
+
         findViewById(R.id.fotinha).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dispatchTakePictureIntent();
+
             }
         });
 
@@ -60,14 +63,18 @@ public class NewPostActivity extends AppCompatActivity {
                 final String postId = db.push().getKey();
 
                 final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                final String photoPost = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
+
 
                 Map postValues = new HashMap();
                 postValues.put("userId", userId);
+                postValues.put("photoUrl",photoPost);
                 postValues.put("comment", comment);
                 postValues.put("image", null);
                 postValues.put("likesCount", 0);
                 postValues.put("commentsCount", 0);
                 postValues.put("createdAt", ServerValue.TIMESTAMP);
+
 
                 Map updateValues = new HashMap();
                 updateValues.put("posts/" + postId, postValues);
@@ -105,6 +112,8 @@ public class NewPostActivity extends AppCompatActivity {
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+
         if (takePictureIntent.resolveActivity(NewPostActivity.this.getPackageManager()) != null) {
             try {
                 tempFile = File.createTempFile("temp", ".jpg", NewPostActivity.this.getCacheDir());

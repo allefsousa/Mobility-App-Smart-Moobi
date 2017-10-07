@@ -50,7 +50,6 @@ import com.akexorcist.googledirection.model.Info;
 import com.akexorcist.googledirection.model.Leg;
 import com.akexorcist.googledirection.model.Route;
 import com.akexorcist.googledirection.util.DirectionConverter;
-
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -77,6 +76,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -112,6 +113,7 @@ public class MenuActivity extends AppCompatActivity
     private static final String Extra_Dialog = "dialog";
     private static final String SELECTED_STYLE = "selected_style";
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
+    private static final int NadaFiltrado = 800;
     private final String noBanco = "teste";
     Marker LocAtual;
     int verificaCor;
@@ -141,11 +143,11 @@ public class MenuActivity extends AppCompatActivity
     CheckBox radipreferencialIdoso;
     @BindView(R.id.radioPreferencialDeficiente)
     CheckBox radideficiente;
-
     @BindView(R.id.radiorampaa)
     CheckBox radirampa;
-    private static final int NadaFiltrado = 800;
-
+    DrawerLayout drawer;
+    int ValidadeFiltro = 0;
+    Menu myMenu;
     private GoogleMap mgoogleMap;
     private GoogleApiClient mgoogleApiClient;
     private Handler mhandler;
@@ -168,14 +170,10 @@ public class MenuActivity extends AppCompatActivity
     private String keyupdateVaga;
     private String keyUsuarioLogado;
     private Intent getFiltro;
-    DrawerLayout drawer;
     private Typeface typeface;
     private ArrayList<LocalVaga> arrayLocal = new ArrayList<>();
     private ArrayList<LocalVaga> arrayUpdateStatus = new ArrayList<>();
     private View theAwesomeView;
-    int ValidadeFiltro = 0;
-    Menu myMenu;
-
 
 
     //endregion
@@ -246,14 +244,11 @@ public class MenuActivity extends AppCompatActivity
         });
 
 
-//        DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference("eendereco");
-//       scoresRef.keepSynced(true);
         if (savedInstanceState != null) {
             int mSelectedStyleId = savedInstanceState.getInt(SELECTED_STYLE);
         }
         mdeveexibirdialog = savedInstanceState == null;
-         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
         //region Onclick CheckBox Filtro
@@ -290,15 +285,9 @@ public class MenuActivity extends AppCompatActivity
                         .start();
                 fab.hide();
                 drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                if(myMenu!= null){
-                    myMenu.findItem( R.id.action_search).setEnabled(false);
+                if (myMenu != null) {
+                    myMenu.findItem(R.id.action_search).setEnabled(false);
                 }
-
-
-
-
-
-
 
 
             }
@@ -322,9 +311,9 @@ public class MenuActivity extends AppCompatActivity
 //                        })
 //                        .start();
 
-               atualizarMapa();
+                atualizarMapa();
                 drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                myMenu.findItem( R.id.action_search).setEnabled(true);
+                myMenu.findItem(R.id.action_search).setEnabled(true);
                 fab.show();
 
             }
@@ -361,7 +350,6 @@ public class MenuActivity extends AppCompatActivity
 
 
         verificarStatusGPS();
-
 
 
         drawer.setEnabled(false);
@@ -427,8 +415,7 @@ public class MenuActivity extends AppCompatActivity
                     ValidadeFiltro = ValidadeFiltro + 100;
 
                 } else {
-                    ValidadeFiltro = ValidadeFiltro -100;
-
+                    ValidadeFiltro = ValidadeFiltro - 100;
 
 
                 }
@@ -460,7 +447,6 @@ public class MenuActivity extends AppCompatActivity
     }
 
 
-
     private void configFabClaro() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.drawable.ic_filterbranco);
@@ -482,7 +468,7 @@ public class MenuActivity extends AppCompatActivity
         ((TextView) toolbar.getChildAt(0)).setTypeface(typeface); // passando o typeface da font para a toolbar assim mudando a font
         if (hora >= 6 && hora < 18) {
             toolbar.setTitleTextColor(corPreto);
-        }else{
+        } else {
             toolbar.setTitleTextColor(corBranco);
         }
 
@@ -496,7 +482,7 @@ public class MenuActivity extends AppCompatActivity
         if (keyupdateVaga != null) {
             // FIXME: 27/08/2017 mudar referencia do no quando mudar o banco 
             data = FirebaseDatabase.getInstance().getReference().child(noBanco).child(keyupdateVaga);
-            data.addValueEventListener(new ValueEventListener() {
+            data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     local = dataSnapshot.getValue(LocalVaga.class);
@@ -509,7 +495,6 @@ public class MenuActivity extends AppCompatActivity
 
                     } else {
                         StatusVaga.setEnabled(false);
-                        StatusVaga.setText("Ocupada");
                     }
 
 
@@ -549,7 +534,6 @@ public class MenuActivity extends AppCompatActivity
         } else {
 
             menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_searchbranco));
-
 
 
         }
@@ -629,8 +613,8 @@ public class MenuActivity extends AppCompatActivity
                                     if (b) {
                                         for (LocalVaga l : arrayLocal) {
 
-
                                             if (l.getId().equals(keyupdateVaga)) {
+
 
                                                 l.setStatusVaga(keyUsuarioLogado);
 
@@ -639,7 +623,13 @@ public class MenuActivity extends AppCompatActivity
                                                 updateVaga.put(l.getId(), l);
                                                 // mudar foto dizendo que a vaga esta ocupada
 
-                                                bd.updateChildren(updateVaga);
+
+                                                bd.updateChildren(updateVaga, new DatabaseReference.CompletionListener() {
+                                                    @Override
+                                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                                        vagaIndisponivel();
+                                                    }
+                                                });
 
                                             }
                                         }
@@ -658,7 +648,12 @@ public class MenuActivity extends AppCompatActivity
                                                 updateVaga.put(l.getId(), l);
 
 
-                                                bd.updateChildren(updateVaga);
+                                                bd.updateChildren(updateVaga).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        atualizarMapa();
+                                                    }
+                                                });
 
 
                                             }
@@ -696,6 +691,16 @@ public class MenuActivity extends AppCompatActivity
 
         }
 
+
+    }
+
+    private void vagaIndisponivel() {
+
+        for (LocalVaga v : arrayLocal){
+            if(v.getId() == keyupdateVaga){
+
+            }
+        }
 
     }
 
@@ -797,18 +802,18 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.config) {
             startActivity(new Intent(context, PlaceAdress.class));
 
-        }else if(id ==R.id.entrarcontato ) {
+        } else if (id == R.id.entrarcontato) {
 
-        }else if (id == R.id.sobre) {
+        } else if (id == R.id.sobre) {
 
 
-        }else if (id == R.id.politica){
+        } else if (id == R.id.politica) {
             Intent i = new Intent(context, webViewPoliticaActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
-        }else if(id == R.id.singout){
-            startActivity(new Intent(context,Sing_in.class));
+        } else if (id == R.id.singout) {
+            startActivity(new Intent(context, Sing_in.class));
             mAuth.signOut();
             finish();
 
@@ -901,9 +906,9 @@ public class MenuActivity extends AppCompatActivity
          */
         NavigationView navigationVieww = (NavigationView) findViewById(R.id.nav_view);
         View hView = navigationVieww.getHeaderView(0);
-        TextView nav_user = (TextView) hView.findViewById(R.id.navName);
-        TextView nav_email = (TextView) hView.findViewById(R.id.navemail);
-        CircleImageView perfil = (CircleImageView) hView.findViewById(R.id.profile_image);
+        TextView nav_user = hView.findViewById(R.id.navName);
+        TextView nav_email = hView.findViewById(R.id.navemail);
+        CircleImageView perfil = hView.findViewById(R.id.profile_image);
 
 
         hora = monitorHora.retornoDataHora();
@@ -935,6 +940,7 @@ public class MenuActivity extends AppCompatActivity
             userLogado.setIdUsuario(mAuth.getCurrentUser().getUid());
             userLogado.setNome(mAuth.getCurrentUser().getDisplayName());
             userLogado.setEmail(mAuth.getCurrentUser().getEmail());
+            userLogado.setUrlPhto(mAuth.getCurrentUser().getPhotoUrl().toString());
             dataUser.child(keyUsuarioLogado).setValue(userLogado);
 
             /**
@@ -944,11 +950,11 @@ public class MenuActivity extends AppCompatActivity
                 if (pro.equals("phone")) {
                     nav_user.setText(mAuth.getCurrentUser().getDisplayName());
                     nav_email.setText(mAuth.getCurrentUser().getPhoneNumber());
-                    perfil.setImageResource(R.drawable.face);
+                    perfil.setImageResource(R.drawable.facebook);
                 } else if (pro.equals("password")) {
                     nav_user.setText(mAuth.getCurrentUser().getDisplayName());
                     nav_email.setText(mAuth.getCurrentUser().getEmail());
-                    perfil.setImageResource(R.drawable.face);
+                    perfil.setImageResource(R.drawable.facebook);
 
                 } else {
                     Picasso.with(MenuActivity.this).load(mAuth.getCurrentUser().getPhotoUrl()).into(perfil);
@@ -968,7 +974,6 @@ public class MenuActivity extends AppCompatActivity
 
 
     }
-
 
 
     private void setSelectedStyle(int i) {
@@ -1160,9 +1165,11 @@ public class MenuActivity extends AppCompatActivity
                 positionMarker = marker.getPosition();
 
                 // RECUPERANDO O ID  DA VAGA CLICADA PARA VERIFICAR A DISPONIBILIDADE
-                for (LocalVaga v : arrayLocal) {
-                    if (v.getLatitude().equals(marker.getPosition().latitude) && v.getLongitude().equals(marker.getPosition().longitude)) {
-                        keyupdateVaga = v.getId();
+                for (LocalVaga aa : arrayLocal) {
+                    LatLng cordenadas = new LatLng(aa.getLatitude(), aa.getLongitude());
+                    if (cordenadas.equals(positionMarker)) {
+                        keyupdateVaga = aa.getId();
+                        Toast.makeText(context, "keeey" + keyupdateVaga, Toast.LENGTH_LONG).show();
 
                     }
                 }
@@ -1209,7 +1216,6 @@ public class MenuActivity extends AppCompatActivity
         });
 
 
-
     }
 
     @Override
@@ -1251,7 +1257,6 @@ public class MenuActivity extends AppCompatActivity
     private void addmMarker() {
         int retorno = ValidadeFiltro; // retorna valor do filtro quando selecionado
 
-
         if (!arrayLocal.isEmpty()) {
             mgoogleMap.clear();
 
@@ -1262,7 +1267,6 @@ public class MenuActivity extends AppCompatActivity
                 if (arrayLocal.get(i).getTipoVaga() == 1) {
 
                     if (retorno == 500 || retorno == 600 || retorno == NadaFiltrado || retorno == 700 || retorno == 0) {
-
                         mgoogleMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
                                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.rampacinza))
@@ -1273,20 +1277,40 @@ public class MenuActivity extends AppCompatActivity
 
                 } else if (arrayLocal.get(i).getTipoVaga() == 2) {
                     if (retorno == 200 || retorno == 300 || retorno == NadaFiltrado || retorno == 700 || retorno == 0) {
-                        mgoogleMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carrozulbranco))
-                                .title("Vaga Automovel Preferencial").snippet("vaga"));
+
+                        if (!arrayLocal.get(i).getStatusVaga().equals("Disponivel")) {
+                            mgoogleMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
+                                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.vagaindisponivel))
+                                    .title("Vaga Automovel Preferencial").snippet("vaga"));
+                        } else {
+                            mgoogleMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
+                                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carrozulbranco))
+                                    .title("Vaga Automovel Preferencial").snippet("vaga"));
+                        }
+
 
                     }
 
 
                 } else if (arrayLocal.get(i).getTipoVaga() == 3) {
                     if (retorno == 100 || retorno == 600 || retorno == NadaFiltrado || retorno == 300 || retorno == 0) {
-                        mgoogleMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.idosoroxo))
-                                .title("Vaga Preferencial Idoso").snippet("idoso"));
+
+
+                        if (!arrayLocal.get(i).getStatusVaga().equals("Disponivel")) {
+                            mgoogleMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
+                                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.idosoindisponivel))
+                                    .title("Vaga Preferencial Idoso").snippet("idoso"));
+
+                        } else {
+
+                            mgoogleMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(arrayLocal.get(i).getLatitude(), arrayLocal.get(i).getLongitude()))
+                                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.idosoroxo))
+                                    .title("Vaga Preferencial Idoso").snippet("idoso"));
+                        }
                     }
 
                 }
@@ -1315,7 +1339,7 @@ public class MenuActivity extends AppCompatActivity
     private void atualizaDadosOffline() {
         boolean connectionStatus;
         connectionStatus = verificaConexao();
-        if(connectionStatus){
+        if (connectionStatus) {
             DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference().child(noBanco);
             scoresRef.keepSynced(true);
         }

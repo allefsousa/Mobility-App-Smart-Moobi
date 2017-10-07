@@ -28,8 +28,6 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mainAdapter = new MainAdapter();
         LinearLayoutManager layoutManager = new LinearLayoutManager(FeedActivity.this);

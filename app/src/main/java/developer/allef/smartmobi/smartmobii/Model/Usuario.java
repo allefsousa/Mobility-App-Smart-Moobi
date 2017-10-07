@@ -1,5 +1,7 @@
 package developer.allef.smartmobi.smartmobii.Model;
 
+import android.net.Uri;
+
 /**
  * Created by Allef on 07/05/2017.
  */
@@ -11,9 +13,18 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String urlPhto;
 
     public Usuario() {
 
+    }
+
+    public String getUrlPhto() {
+        return urlPhto;
+    }
+
+    public void setUrlPhto(String urlPhto) {
+        this.urlPhto = urlPhto;
     }
 
     public String getNome() {

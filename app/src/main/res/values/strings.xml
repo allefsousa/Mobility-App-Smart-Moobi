@@ -134,7 +134,7 @@
     <string name="AuthTextbuttomEnviar">Enviar Codigo</string>
     <string name="AuthTelefoneReenviar">Reenviar</string>
     <string name="feed">Time Line</string>
-    <string name="Phone_Auth_descricao">Informe o numero de seu celular corretamente</string>
+    <string name="Phone_Auth_descricao">O Smart Mobi enviará um SMS para verificar seu numero de telefone. Informe corretamente o codigo de area e seu telefone.</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

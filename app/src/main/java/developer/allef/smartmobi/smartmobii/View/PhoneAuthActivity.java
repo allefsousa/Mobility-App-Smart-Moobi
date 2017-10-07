@@ -123,16 +123,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
-        new CountDownTimer(60000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                titulo.setText("Tempo Restante : " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                 titulo.setText("done!");
-            }
-        }.start();
     }
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
