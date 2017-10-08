@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="7dp"
     app:cardElevation="5dp">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,15 +34,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:textColor="@color/Branco">
 
                 <TextView
                     android:id="@+id/feedNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Nome"
                     android:textSize="15dp"
-                    android:textStyle="bold"
-                    android:text="Nome" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/datafeed"
@@ -55,6 +55,7 @@
 
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/comment"
             android:layout_width="match_parent"

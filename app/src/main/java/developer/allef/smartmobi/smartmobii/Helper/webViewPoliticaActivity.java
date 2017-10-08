@@ -1,15 +1,14 @@
-package developer.allef.smartmobi.smartmobii.View;
+package developer.allef.smartmobi.smartmobii.Helper;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.WindowDecorActionBar;
 import android.webkit.WebView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import developer.allef.smartmobi.smartmobii.R;
+import developer.allef.smartmobi.smartmobii.View.MenuActivity;
 
 public class webViewPoliticaActivity extends AppCompatActivity {
 

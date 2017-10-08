@@ -72,6 +72,14 @@
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:padding">10dp</item>
     </style>
+    <style name="tool" parent="AppThemeToolbar">
+        <item name="colorAccent">@color/primaryLightColor</item>
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+
+
+
+    </style>
 
 
     <style name="AppTheme.OverlayToolbar" parent="AppThemeToolbar">

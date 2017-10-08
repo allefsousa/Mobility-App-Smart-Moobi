@@ -108,7 +108,6 @@
             android:name=".View.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Intro" />
-        <activity android:name=".TestSingInGoogle" />
         <activity
             android:name=".View.EmailCadastro"
             android:theme="@style/AppTheme.OverlayToolbar">
@@ -128,7 +127,7 @@
         <activity
             android:name=".View.NewPostActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.OverlayToolbar">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="developer.allef.smartmobi.smartmobii.View.FeedActivity" />
@@ -141,9 +140,8 @@
                 android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
         </activity>
         <activity
-            android:name=".View.webViewPoliticaActivity"
+            android:name=".Helper.webViewPoliticaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.ValidaCodigoPhone"></activity>
     </application>
 
 </manifest>

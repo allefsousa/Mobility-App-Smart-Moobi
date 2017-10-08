@@ -96,6 +96,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import developer.allef.smartmobi.smartmobii.Helper.monitorHora;
+import developer.allef.smartmobi.smartmobii.Helper.webViewPoliticaActivity;
 import developer.allef.smartmobi.smartmobii.Model.LocalVaga;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
 import developer.allef.smartmobi.smartmobii.PlaceAdress;

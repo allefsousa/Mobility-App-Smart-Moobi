@@ -57,6 +57,10 @@ public class PlacePickeeer extends AppCompatActivity {
         setContentView(R.layout.activity_place_picker);
         local = new LocalVaga();
 
+        getSupportActionBar().setTitle("Adicionar Local");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar);
+
         ButterKnife.bind(this);
 
 

@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.google.firebase.database.ChildEventListener;
@@ -22,11 +23,19 @@ public class FeedActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MainAdapter mainAdapter;
     FloatingActionButton fab;
+    private Toolbar tool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
+        tool = (Toolbar) findViewById(R.id.too);
+        setSupportActionBar(tool);
+        getSupportActionBar().setTitle("Time Line");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar);
+        tool.setBackgroundColor(getResources().getColor(R.color.primaryDarkColor));
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mainAdapter = new MainAdapter();
@@ -62,6 +71,7 @@ public class FeedActivity extends AppCompatActivity {
 
 
          fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

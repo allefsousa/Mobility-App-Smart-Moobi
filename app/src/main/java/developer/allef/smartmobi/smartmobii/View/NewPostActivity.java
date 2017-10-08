@@ -61,8 +61,9 @@ public class NewPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
          addPost = new Feed();
-        // TODO: 07/10/2017 trazer data e hora para o post
-        Toast.makeText(this, "data"+ monitorHora.retornadaData(), Toast.LENGTH_SHORT).show();
+        getSupportActionBar().setTitle("Postar na Linha do Tempo");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar);
 
 
 
