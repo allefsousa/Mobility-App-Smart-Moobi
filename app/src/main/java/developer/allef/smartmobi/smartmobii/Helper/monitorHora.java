@@ -10,18 +10,14 @@ import java.util.Date;
 
 public class monitorHora {
 
-    public static int retornoDataHora(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
-        // OU
+    public static int retornoHora(){
+
         SimpleDateFormat dateFormat_hora = new SimpleDateFormat("HH:mm:ss");
 
-        Date data = new Date();
-
         Calendar cal = Calendar.getInstance();
-
         Date data_atual = cal.getTime();
 
-        String data_completa = dateFormat.format(data_atual);
+
 
         String hora_atual = dateFormat_hora.format(data_atual);
 
@@ -33,6 +29,16 @@ public class monitorHora {
 
 
         return horaInteira;
+    }
+
+
+    public  static String retornadaData(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar cal = Calendar.getInstance();
+        Date data_atual = cal.getTime();
+        String data_completa = dateFormat.format(data_atual);
+
+        return data_completa;
     }
 
 }

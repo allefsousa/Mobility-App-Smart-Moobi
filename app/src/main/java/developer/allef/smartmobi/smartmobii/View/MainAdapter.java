@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,11 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.security.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
@@ -131,14 +137,60 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         }
 
         public void render(DataSnapshot dataSnapshot) {
+
             String userId = (dataSnapshot.child("userId").getValue(String.class));
-            String photouri = (dataSnapshot.child("photoUrl").getValue(String.class));
+            String photouri = (dataSnapshot.child("photoperfil").getValue(String.class));
 
-            textView.setText(dataSnapshot.child("comment").getValue(String.class));
+            textView.setText(dataSnapshot.child("legenda").getValue(String.class));
+            nomeusurio.setText(dataSnapshot.child("nomeUserPost").getValue(String.class));
+            String dat = dataSnapshot.child("dataPost").getValue(String.class);
+            String [] arraydat = dat.split("-");
+            String nomeMes = null;
+            int  mes = Integer.parseInt(arraydat[1]);
+            switch (mes){
+                case 1:
+                    nomeMes = "Janeiro";
+                    break;
+                case 2:
+                    nomeMes = "Fevereiro";
+                    break;
+                case 3:
+                    nomeMes = "Março";
+                    break;
+                case 4:
+                    nomeMes = "Abrir";
+                    break;
+                case 5:
+                    nomeMes = "Maio";
+                    break;
+                case 6:
+                    nomeMes = " Junho";
+                    break;
+                case 7:
+                    nomeMes = " Julho";
+                    break;
+                case 8:
+                    nomeMes = " Agosto";
+                    break;
+                case 9:
+                    nomeMes = " Setembro";
+                    break;
+                case 10:
+                    nomeMes = " Outubro";
+                    break;
+                case 11:
+                    nomeMes = " Novembro";
+                    break;
+                case 12:
+                    nomeMes = " Dezembro";
+                    break;
 
+            }
+            String datafinal = arraydat[0]+nomeMes+" ,"+arraydat[2];
+            dataUsuario.setText(datafinal);
 
             Picasso.with(itemView.getContext())
-                    .load(dataSnapshot.child("image").getValue(String.class))
+                    .load(dataSnapshot.child("imagem").getValue(String.class))
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.placeholder)
                     .into(imageView);
@@ -148,7 +200,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                     .into(fotoperfil);
 
 
-            int likesCount = dataSnapshot.child("likesCount").getValue(Integer.class);
+            int likesCount = dataSnapshot.child("contadorLikes").getValue(Integer.class);
             if (likesCount > 0) {
                 likesCountTextView.setText("" + likesCount);
             }
@@ -162,7 +214,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                         likeImageView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("posts/" + dataSnapshot.getKey() + "/likesCount");
+                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + dataSnapshot.getKey() + "/contadorLikes");
                                 postLikesCountRef.runTransaction(new Transaction.Handler() {
                                     @Override
                                     public Transaction.Result doTransaction(MutableData mutableData) {
@@ -173,6 +225,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
                                     @Override
                                     public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
                                     }
                                 });
                             }
@@ -183,7 +236,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                         likeImageView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("posts/" + dataSnapshot.getKey() + "/likesCount");
+                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + dataSnapshot.getKey() + "/contadorLikes");
                                 postLikesCountRef.runTransaction(new Transaction.Handler() {
                                     @Override
                                     public Transaction.Result doTransaction(MutableData mutableData) {

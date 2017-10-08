@@ -183,7 +183,7 @@ public class MenuActivity extends AppCompatActivity
         // referencia do Nó do firebase
         bd = FirebaseDatabase.getInstance().getReference().child(noBanco);
         typeface = Typeface.createFromAsset(this.getAssets(), "laconicregular.otf");
-        hora = monitorHora.retornoDataHora();
+        hora = monitorHora.retornoHora();
 
 
         //region OnCreate  Cores Dia/Noite
@@ -911,7 +911,7 @@ public class MenuActivity extends AppCompatActivity
         CircleImageView perfil = hView.findViewById(R.id.profile_image);
 
 
-        hora = monitorHora.retornoDataHora();
+        hora = monitorHora.retornoHora();
 
         if (hora >= 6 && hora < 18) {
             //  mapa claro Icones pretos
@@ -1382,7 +1382,7 @@ public class MenuActivity extends AppCompatActivity
     }
 
     private void defCorMapa() {
-        hora = monitorHora.retornoDataHora();
+        hora = monitorHora.retornoHora();
 
 
         if (!verificaConexao()) { // verificando a conexao com a internet caso nao tenha ..

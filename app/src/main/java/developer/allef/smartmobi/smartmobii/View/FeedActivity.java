@@ -36,7 +36,7 @@ public class FeedActivity extends AppCompatActivity {
 
 
 
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("posts");
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("feed");
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildKey) {
