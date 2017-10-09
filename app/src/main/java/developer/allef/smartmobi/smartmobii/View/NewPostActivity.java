@@ -182,11 +182,16 @@ public class NewPostActivity extends AppCompatActivity {
             if (tempFile == null) return;
             UCrop.Options options = new UCrop.Options();
             options.setHideBottomControls(false);
-            options.setActiveWidgetColor(getResources().getColor(R.color.colorAccent));
-            options.setLogoColor(getResources().getColor(R.color.colorAccent));
-            options.setCropFrameColor(getResources().getColor(R.color.colorAccent));
-            options.setStatusBarColor(getResources().getColor(R.color.colorAccent));
+            options.setActiveWidgetColor(getResources().getColor(R.color.secondaryDarkColor));
+            options.setLogoColor(getResources().getColor(R.color.secondaryDarkColor));
+            options.setCropFrameColor(getResources().getColor(R.color.secondaryDarkColor));
+            options.setStatusBarColor(getResources().getColor(R.color.primaryDarkColor));
+            options.setCropGridColor(getResources().getColor(R.color.secondaryDarkColor));
+            options.setToolbarColor(getResources().getColor(R.color.primaryDarkColor));
+            options.setToolbarWidgetColor(getResources().getColor(R.color.Branco));
+         //   options.setDimmedLayerColor(getResources().getColor(R.color.Branco));
             options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+            options.setToolbarTitle("Ajustar Foto");
             options.setCompressionQuality(90);
             try {
                 cropTempFile = File.createTempFile("temp_crop", ".jpg", NewPostActivity.this.getCacheDir());

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        >
+        android:id="@+id/linearLayout">
 
         <ImageView
             android:id="@+id/fotinha"
@@ -21,12 +21,19 @@
             android:src="@drawable/placeholder"
             />
 
-        <EditText
-            android:id="@+id/comment"
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:hint="Comentario"
             android:layout_height="wrap_content"
-            />
+         >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:id="@+id/comment"
+                android:layout_height="wrap_content"
+                android:hint="Legenda" />
+        </android.support.design.widget.TextInputLayout>
+
         <Button
             android:id="@+id/post"
             android:layout_width="match_parent"
@@ -35,6 +42,8 @@
             />
 
     </LinearLayout>
+
+
 
 
 </RelativeLayout>
