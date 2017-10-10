@@ -1,6 +1,7 @@
 package developer.allef.smartmobi.smartmobii.View;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +35,9 @@ import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,6 +45,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import developer.allef.smartmobi.smartmobii.Helper.monitorHora;
 import developer.allef.smartmobi.smartmobii.Model.Feed;
@@ -51,8 +57,8 @@ public class NewPostActivity extends AppCompatActivity {
     private File tempFile = null;
     private File cropTempFile = null;
     Feed addPost;
-    protected static final int CAMERA_REQUEST = 0;
-    protected static final int GALLERY_PICTURE = 1;
+    Context context;
+
 
 
 
@@ -64,6 +70,9 @@ public class NewPostActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Postar na Linha do Tempo");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar);
+        context = NewPostActivity.this;
+
+
 
 
 
@@ -82,53 +91,60 @@ public class NewPostActivity extends AppCompatActivity {
         findViewById(R.id.post).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String comment = ((EditText)findViewById(R.id.comment)).getText().toString();
 
 
-                final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference db =FirebaseDatabase.getInstance().getReference();
+                String postId = db.push().getKey();
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                final String postId = db.push().getKey();
+                 fazerUploadPhoto(db,postId,userId,view);
 
-                final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-               final  String datapost = monitorHora.retornadaData();
+               }
+        });
+    }
 
-                addPost.setLegenda(comment);
-                addPost.setUserId(userId);
-                addPost.setPhotoperfil(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
-                addPost.setNomeUserPost(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                addPost.setEmailUserPost(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                addPost.setImagem("");
-                addPost.setContadorLikes(0);
-                addPost.setDataPost(datapost);
-                addPost.setContadorComentarios(0);
-                db.child("feed").child(postId).setValue(addPost);
-                db.child("postUsuario").child(userId).child(postId).setValue(addPost).addOnCompleteListener(new OnCompleteListener<Void>() {
+    private void fazerUploadPhoto(final DatabaseReference db, final String postId, final String userId, final View view) {
+        final String[] uridown = new String[1];
+        final String datapost = monitorHora.retornadaData();
+
+        Calendar cal = Calendar.getInstance();
+        Date data_atual = cal.getTime();
+        final Timestamp ts = new Timestamp(data_atual.getTime());
+        final Long a = ts.getTime();
+
+        final String comment = ((EditText) findViewById(R.id.comment)).getText().toString();
+
+        StorageReference photoRef = FirebaseStorage.getInstance().getReference().child("posts").child(postId + ".jpg");
+
+        photoRef.putFile(Uri.fromFile(cropTempFile))
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(!task.isSuccessful()) {
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                        uridown[0] = downloadUrl.toString();
+                        if (uridown[0] == null) return;
 
-                        }
-                        final StorageReference photoRef = FirebaseStorage.getInstance().getReference().child("posts").child(postId + ".jpg");
 
-                        photoRef.putFile(Uri.fromFile(cropTempFile))
-                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        String downloadPath = taskSnapshot.getMetadata().getDownloadUrl().toString();
-                                        Map<String, Object> postValues = new HashMap<String, Object>();
-                                        postValues.put("imagem", downloadPath);
-                                        postValues.put("createdAt", ServerValue.TIMESTAMP);
-                                        db.child("feed").child(postId).updateChildren(postValues);
-                                        db.child("postUsuario").child(userId).child(postId).updateChildren(postValues);
-                                        finish();
-                                    }
-                                });
+                        addPost.setLegenda(comment);
+                        addPost.setCreatedAt(a);
+                        addPost.setUserId(userId);
+                        addPost.setPhotoperfil(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString());
+                        addPost.setNomeUserPost(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                        addPost.setEmailUserPost(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                        addPost.setImagem(uridown[0]);
+                        addPost.setContadorLikes(0);
+                        addPost.setDataPost(datapost);
+                        addPost.setContadorComentarios(0);
+                        db.child("feed").child(postId).setValue(addPost);
+                        db.child("postUsuario").child(userId).child(postId).setValue(addPost).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    finish();
+                                }
 
-                    }
-                });
-
-            }
-
+                            }
+                        });
 
 //                Map postValues = new HashMap();
 //                postValues.put("userId", userId);
@@ -153,9 +169,27 @@ public class NewPostActivity extends AppCompatActivity {
 //                        }
 //
 //
-//           }
+//
+
+
+//                        // String downloadPath = taskSnapshot.getMetadata().getDownloadUrl().toString();
+//                        Map<String, Object> postValues = new HashMap<>();
+//                        postValues.put("imagem", uridown);
+//                        postValues.put("createdAt", ServerValue.TIMESTAMP);
+//                        db.child("feed").child(postId).updateChildren(postValues);
+//                        db.child("postUsuario").child(userId).child(postId).updateChildren(postValues);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Snackbar.make(view, "Houve um erro ao salvar o post..." + e.getMessage(), Snackbar.LENGTH_LONG).show();
+            }
         });
     }
+
+
+
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

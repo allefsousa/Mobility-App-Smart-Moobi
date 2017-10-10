@@ -19,12 +19,11 @@ public class Feed {
     private String imagem;
     private int contadorLikes;
     private int contadorComentarios;
-    Object createdAt;
+    private Long createdAt;
 
 
 
     public Feed() {
-        createdAt = ServerValue.TIMESTAMP;
     }
 
     public String getDataPost() {
@@ -107,9 +106,14 @@ public class Feed {
     public void setContadorComentarios(int contadorComentarios) {
         this.contadorComentarios = contadorComentarios;
     }
-    @Exclude
-    public long getCreatedTimestampLong(){
-        return (long)createdAt;
+
+
+    public Long getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Long createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

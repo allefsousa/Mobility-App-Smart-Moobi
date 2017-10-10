@@ -78,6 +78,34 @@ public class FeedActivity extends AppCompatActivity {
                 startActivity(new Intent(FeedActivity.this, NewPostActivity.class));
             }
         });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+//                {
+//                    fab.show();
+//                }
+
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy >0) {
+                    // Scroll Down
+                    if (fab.isShown()) {
+                        fab.hide();
+                    }
+                }
+                else if (dy <0) {
+                    // Scroll Up
+                    if (!fab.isShown()) {
+                        fab.show();
+                    }
+                }
+            }
+        });
 
     }
 

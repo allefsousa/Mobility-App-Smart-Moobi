@@ -36,6 +36,7 @@ public class monitorHora {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();
         Date data_atual = cal.getTime();
+
         String data_completa = dateFormat.format(data_atual);
 
         return data_completa;
