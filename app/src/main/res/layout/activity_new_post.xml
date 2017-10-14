@@ -25,12 +25,14 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/textinpcomentario"
          >
 
             <EditText
                 android:layout_width="match_parent"
                 android:id="@+id/comment"
                 android:layout_height="wrap_content"
+                android:textSize="13dp"
                 android:hint="Legenda" />
         </android.support.design.widget.TextInputLayout>
 

@@ -1,6 +1,5 @@
 package developer.allef.smartmobi.smartmobii.View;
 
-import android.net.Uri;
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,22 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.security.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
@@ -101,7 +93,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        DatabaseReference likedRef;
+
         ValueEventListener likeValueEventListener;
         DatabaseReference userRef;
         ValueEventListener userValueEventListener;
@@ -115,6 +107,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         CircleImageView fotoperfil;
         TextView nomeusurio;
         TextView dataUsuario;
+        Boolean flagLike;
 
         public ViewHolder(View v) {
             super(v);
@@ -129,25 +122,26 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         }
 
         public void reset() {
-            if (likedRef != null) likedRef.removeEventListener(likeValueEventListener);
             textView.setText("");
             imageView.setImageResource(R.drawable.placeholder);
             likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
             likesCountTextView.setText("");
         }
 
-        public void render(DataSnapshot dataSnapshot) {
+        public void render( DataSnapshot dataSnapshot) {
 
-            String userId = (dataSnapshot.child("userId").getValue(String.class));
+            final String userId = (dataSnapshot.child("userId").getValue(String.class));
             String photouri = (dataSnapshot.child("photoperfil").getValue(String.class));
+            final String key = dataSnapshot.getKey();
+            final int likesCount = dataSnapshot.child("contadorLikes").getValue(Integer.class);
 
             textView.setText(dataSnapshot.child("legenda").getValue(String.class));
             nomeusurio.setText(dataSnapshot.child("nomeUserPost").getValue(String.class));
             String dat = dataSnapshot.child("dataPost").getValue(String.class);
-            String [] arraydat = dat.split("-");
+            String[] arraydat = dat.split("-");
             String nomeMes = null;
-            int  mes = Integer.parseInt(arraydat[1]);
-            switch (mes){
+            int mes = Integer.parseInt(arraydat[1]);
+            switch (mes) {
                 case 1:
                     nomeMes = "Janeiro";
                     break;
@@ -186,7 +180,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                     break;
 
             }
-            String datafinal = arraydat[0]+nomeMes+" ,"+arraydat[2];
+            String datafinal = arraydat[0] + nomeMes + " ," + arraydat[2];
             dataUsuario.setText(datafinal);
 
             Picasso.with(itemView.getContext())
@@ -198,71 +192,133 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             Picasso.with(itemView.getContext())
                     .load(photouri)
                     .into(fotoperfil);
+            likeImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addLike(key, userId,likesCount);
+                    verificalike(key,userId);                }
+            });
 
 
-            int likesCount = dataSnapshot.child("contadorLikes").getValue(Integer.class);
+
+
             if (likesCount > 0) {
                 likesCountTextView.setText("" + likesCount);
             }
 
-            likedRef = FirebaseDatabase.getInstance().getReference("post_likes/" + userId + "/" + dataSnapshot.getKey());
-            likeValueEventListener = new ValueEventListener() {
+            verificalike(key,userId);
+//
+//            likedRef = FirebaseDatabase.getInstance().getReference("post_likes/" + userId + "/" + dataSnapshot.getKey());
+//            likeValueEventListener = new ValueEventListener() {
+//                @Override
+//                public void onDataChange(final DataSnapshot dataSnapshot) {
+//                    if (dataSnapshot.exists() && dataSnapshot.getValue(Boolean.class)) {
+//                        if(userId.equals(dataSnapshot.getValue()))
+//                        likeImageView.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + dataSnapshot.getKey() + "/contadorLikes");
+//                                postLikesCountRef.runTransaction(new Transaction.Handler() {
+//                                    @Override
+//                                    public Transaction.Result doTransaction(MutableData mutableData) {
+//
+//
+//                                        likedRef.setValue(false);
+//                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) - 1);
+//                                        return null;
+//                                    }
+//
+//                                    @Override
+//                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+//
+//                                    }
+//                                });
+//                            }
+//                        });
+//
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//
+//            };
+//            likedRef.addValueEventListener(likeValueEventListener);
+
+
+        }
+
+        private void verificalike(final String k, final String id) {
+            final DatabaseReference d = FirebaseDatabase.getInstance().getReference().child("NewLikePost");
+            d.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(final DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists() && dataSnapshot.getValue(Boolean.class)) {
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.child(k).hasChild(id)){
+                        // ta curtido
                         likeImageView.setImageResource(R.drawable.ic_favorite_black_24dp);
-                        likeImageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + dataSnapshot.getKey() + "/contadorLikes");
-                                postLikesCountRef.runTransaction(new Transaction.Handler() {
-                                    @Override
-                                    public Transaction.Result doTransaction(MutableData mutableData) {
-                                        likedRef.setValue(false);
-                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) - 1);
-                                        return null;
-                                    }
-
-                                    @Override
-                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-
-                                    }
-                                });
-                            }
-                        });
-
-                    } else {
+                    }else{
+                        // nao ta curtido
                         likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
-                        likeImageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + dataSnapshot.getKey() + "/contadorLikes");
-                                postLikesCountRef.runTransaction(new Transaction.Handler() {
-                                    @Override
-                                    public Transaction.Result doTransaction(MutableData mutableData) {
-                                        likedRef.setValue(true);
-                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) + 1);
-                                        return null;
-                                    }
-
-                                    @Override
-                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                                    }
-                                });
-                            }
-                        });
                     }
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
+
                 }
-            };
-            likedRef.addValueEventListener(likeValueEventListener);
-
-
+            });
 
         }
 
+        private void addLike(final String key, final String userId, final int valbd) {
+            flagLike = true;
+            final int[] calculo = {0};
+
+            final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + key + "/contadorLikes");
+            final DatabaseReference likedRef = FirebaseDatabase.getInstance().getReference().child("NewLikePost");
+            likedRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                    if (flagLike) {
+                        if (dataSnapshot.child(key).hasChild(userId)) {
+                         //   likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                            likedRef.child(key).child(userId).removeValue();
+                            flagLike = false;
+                            calculo[0] = valbd -1;
+                            postLikesCountRef.setValue(calculo[0]);
+
+                        } else {
+                          //  likeImageView.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            likedRef.child(key).child(userId).setValue(true);
+                            flagLike = false;
+
+                            calculo[0] = valbd +1;
+                            postLikesCountRef.setValue(calculo[0]);
+
+
+
+                        }
+
+                    }
+
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+
+
     }
+
+
 }

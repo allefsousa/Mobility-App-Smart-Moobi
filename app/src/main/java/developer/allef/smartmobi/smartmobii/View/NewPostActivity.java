@@ -146,39 +146,6 @@ public class NewPostActivity extends AppCompatActivity {
                             }
                         });
 
-//                Map postValues = new HashMap();
-//                postValues.put("userId", userId);
-//                postValues.put("photoUrl",photoPost);
-//                postValues.put("comment", comment);
-//                postValues.put("image", null);
-//                postValues.put("likesCount", 0);
-//                postValues.put("commentsCount", 0);
-//                postValues.put("createdAt", ServerValue.TIMESTAMP);
-
-
-//                Map updateValues = new HashMap();
-//                updateValues.put("posts/" + postId, postValues);
-//                updateValues.put("userPosts/" + userId + "/" + postId, postValues);
-//
-//                db.updateChildren(updateValues, new DatabaseReference.CompletionListener() {
-//                    @Override
-//                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-//                        if (databaseError != null) {
-//                            //TODO: Deu erro e agora?
-//                            return;
-//                        }
-//
-//
-//
-
-
-//                        // String downloadPath = taskSnapshot.getMetadata().getDownloadUrl().toString();
-//                        Map<String, Object> postValues = new HashMap<>();
-//                        postValues.put("imagem", uridown);
-//                        postValues.put("createdAt", ServerValue.TIMESTAMP);
-//                        db.child("feed").child(postId).updateChildren(postValues);
-//                        db.child("postUsuario").child(userId).child(postId).updateChildren(postValues);
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
