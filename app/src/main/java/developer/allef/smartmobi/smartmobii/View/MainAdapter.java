@@ -285,14 +285,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
                     if (flagLike) {
                         if (dataSnapshot.child(key).hasChild(userId)) {
-                         //   likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+
                             likedRef.child(key).child(userId).removeValue();
                             flagLike = false;
                             calculo[0] = valbd -1;
                             postLikesCountRef.setValue(calculo[0]);
 
                         } else {
-                          //  likeImageView.setImageResource(R.drawable.ic_favorite_black_24dp);
                             likedRef.child(key).child(userId).setValue(true);
                             flagLike = false;
 

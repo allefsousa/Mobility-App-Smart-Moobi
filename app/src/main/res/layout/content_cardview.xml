@@ -17,6 +17,8 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -39,6 +41,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:id="@+id/ico"
+
                         android:src="@drawable/ic_android_arrow_up"
                         android:layout_height="wrap_content" />
 
@@ -49,6 +52,8 @@
                         android:id="@+id/establishment_title"
                         android:textSize="18sp"
                         android:paddingLeft="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_text"
                         android:paddingRight="5dp"
                         android:gravity="center"
                         android:fontFamily="sans-serif-light"
@@ -80,9 +85,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:id="@+id/quilometragem"
-                        android:textSize="13sp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-light"
                         android:text=""/>
 
@@ -90,18 +95,10 @@
                         android:id="@+id/duracao"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:gravity="center_horizontal"
-                        android:textSize="13sp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
                         android:text="duracao" />
-                    <TextView
-                        android:id="@+id/enddescri"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:gravity="center_horizontal"
-                        android:textSize="13sp"
-                        android:text="endereço" />
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -114,7 +111,7 @@
                             android:id="@+id/tipov"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
                             android:textSize="15sp"
                             android:text=""/>
 
@@ -143,10 +140,31 @@
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:cardUseCompatPadding="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </android.support.v7.widget.CardView>
+
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -180,7 +198,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/routePrincipal"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="20dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
@@ -209,7 +227,7 @@
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="Trajeto Alternativo"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -226,7 +244,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/routeAlternative1"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="20dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
@@ -244,18 +262,12 @@
                         android:id="@+id/switch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="15dp"
                         android:textOff="No"
                         android:textOn="Yes"
                         android:text="Status Da Vaga : "
                         android:layout_gravity="left"
                         />
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:text="A vaga esta ocupada ?"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:textSize="17dp"-->
-                        <!--android:layout_height="match_parent" />-->
-
 
                 </LinearLayout>
 

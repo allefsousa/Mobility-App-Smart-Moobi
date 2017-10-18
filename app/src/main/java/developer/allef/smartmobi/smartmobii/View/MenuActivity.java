@@ -126,8 +126,6 @@ public class MenuActivity extends AppCompatActivity
     Leg leg;
     @BindView(R.id.quilometragem)
     TextView km;
-    @BindView(R.id.enddescri)
-    TextView enderecoloc;
     @BindView(R.id.duracao)
     TextView tempoPercurso;
     @BindView(R.id.establishment_progress)
