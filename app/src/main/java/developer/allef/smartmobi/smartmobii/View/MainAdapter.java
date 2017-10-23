@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
@@ -134,6 +137,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             String photouri = (dataSnapshot.child("photoperfil").getValue(String.class));
             final String key = dataSnapshot.getKey();
             final int likesCount = dataSnapshot.child("contadorLikes").getValue(Integer.class);
+            FirebaseAuth auth;
+            auth = FirebaseAuth.getInstance();
+           final String idd =  auth.getCurrentUser().getUid();
+            Log.d("Allef", "render: " + idd);
 
             textView.setText(dataSnapshot.child("legenda").getValue(String.class));
             nomeusurio.setText(dataSnapshot.child("nomeUserPost").getValue(String.class));
@@ -195,9 +202,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             likeImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    addLike(key, userId,likesCount);
-                    verificalike(key,userId);                }
-            });
+                    addLike(key, idd,likesCount);
+                    verificalike(key,idd);                }
+            });// FIXME: 23/10/2017  user logado key Auth
 
 
 
@@ -206,7 +213,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 likesCountTextView.setText("" + likesCount);
             }
 
-            verificalike(key,userId);
+            verificalike(key,idd);// FIXME: 23/10/2017  como estava verificalike(key,userId)
 //
 //            likedRef = FirebaseDatabase.getInstance().getReference("post_likes/" + userId + "/" + dataSnapshot.getKey());
 //            likeValueEventListener = new ValueEventListener() {
@@ -292,7 +299,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                             postLikesCountRef.setValue(calculo[0]);
 
                         } else {
-                            likedRef.child(key).child(userId).setValue(true);
+                            // TODO: 23/10/2017 fazer update e nao inserir pois esta apagando os outros likes 
+                            Map<String,Object> lik = new HashMap<String, Object>();
+                            lik.put(userId,true);
+                            likedRef.child(key).updateChildren(lik); // FIXME: 23/10/2017 update no lugar de setvalue
                             flagLike = false;
 
                             calculo[0] = valbd +1;
