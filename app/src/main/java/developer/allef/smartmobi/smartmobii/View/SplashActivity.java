@@ -21,6 +21,7 @@ import com.google.firebase.perf.metrics.Trace;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import developer.allef.smartmobi.smartmobii.Interfaces.SplashInterface;
 import developer.allef.smartmobi.smartmobii.R;
 
 
@@ -90,8 +91,9 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+
     // tempo de pausa da Splsh Screem
-    private void startAnimation() {
+    public void startAnimation() {
 
 
         splashTread = new Thread() {
@@ -165,6 +167,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onPause();
         firebaseAuth.removeAuthStateListener(authStateListener);
     }
+
 
 
 }

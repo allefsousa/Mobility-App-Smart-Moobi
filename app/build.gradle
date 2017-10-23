@@ -73,6 +73,7 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:11.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.yalantis:ucrop:2.2.0'
+    compile 'com.iarcuschin:simpleratingbar:0.1.5'
     compile 'com.github.jaouan:revealator:1.2.1'
     compile 'agency.tango.android:material-intro-screen:0.0.5'
     compile 'com.github.dmytrodanylyk.circular-progress-button:library:1.1.3'

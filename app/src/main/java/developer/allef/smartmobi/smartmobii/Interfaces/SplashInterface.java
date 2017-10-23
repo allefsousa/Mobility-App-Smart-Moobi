@@ -9,14 +9,13 @@ import android.content.Intent;
 public interface SplashInterface {
 
     interface View   {
-      void  StartProximaActivity(Intent intent);
+       void startAnimation();
+        // TODO: 19/10/2017 ver como  adicona metodos de criaação na interface
 
 
     }
 
     interface Presenter{
-        void BuscandoLocalizacao();
-        void conexaoBD();
-        void verificaArray();
+
     }
 }

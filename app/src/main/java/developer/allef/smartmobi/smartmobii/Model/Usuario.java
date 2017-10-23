@@ -8,8 +8,6 @@ import android.net.Uri;
 
 public class Usuario {
     private String idUsuario;
-
-
     private String nome;
     private String email;
     private String senha;
@@ -17,6 +15,9 @@ public class Usuario {
 
     public Usuario() {
 
+    }
+
+    public Usuario(String idUsuario) {
     }
 
     public String getUrlPhto() {

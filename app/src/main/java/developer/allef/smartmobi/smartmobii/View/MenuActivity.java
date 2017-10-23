@@ -1,5 +1,6 @@
 package developer.allef.smartmobi.smartmobii.View;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -33,6 +34,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
@@ -84,6 +86,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.jaouan.revealator.Revealator;
 import com.squareup.picasso.Picasso;
 
@@ -91,6 +94,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -144,9 +149,18 @@ public class MenuActivity extends AppCompatActivity
     CheckBox radideficiente;
     @BindView(R.id.radiorampaa)
     CheckBox radirampa;
+
+
+    @BindView(R.id.rating)
+    SimpleRatingBar myRetingBar;
+    @BindView(R.id.ratinreputacao)
+    TextView myRetingreputacao;
+
     DrawerLayout drawer;
     int ValidadeFiltro = 0;
     Menu myMenu;
+    ArrayList<Usuario> ArrayUsuario = new ArrayList<>();
+    Map<String, Object> pontuacaoo = new HashMap<>();
     private GoogleMap mgoogleMap;
     private GoogleApiClient mgoogleApiClient;
     private Handler mhandler;
@@ -173,6 +187,7 @@ public class MenuActivity extends AppCompatActivity
     private ArrayList<LocalVaga> arrayLocal = new ArrayList<>();
     private ArrayList<LocalVaga> arrayUpdateStatus = new ArrayList<>();
     private View theAwesomeView;
+    DatabaseReference data;
 
 
     //endregion
@@ -299,16 +314,6 @@ public class MenuActivity extends AppCompatActivity
                 Revealator.unreveal(theAwesomeView)
                         .to(fab)
                         .withCurvedTranslation().start();
-//                        .withUnrevealDuration(...)
-//                        .withTranslateDuration(...)
-//                        .withEndAction(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                //fab.show();
-//                                Snackbar.make(fab, "What a beautiful snackbar !", Snackbar.LENGTH_LONG).show();
-//                            }
-//                        })
-//                        .start();
 
                 atualizarMapa();
                 drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
@@ -580,6 +585,7 @@ public class MenuActivity extends AppCompatActivity
     private void initBottomSheet() {
         nestedScrollView = (NestedScrollView) findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(nestedScrollView);
+        Usuario pointsUser = new Usuario();
 
         // altura inicial do botão de detales
         bottomSheetBehavior.setPeekHeight(0);
@@ -594,14 +600,70 @@ public class MenuActivity extends AppCompatActivity
                 public void onStateChanged(@NonNull View bottomSheet, int newState) {
                     // passando a altura novamente para zero para que ele feche por completo
                     bottomSheetBehavior.setPeekHeight(0);
+                    final Map<String, Float> pontuacao = new HashMap<>();
+                    final Map<String, Object> pont = new HashMap<>();
+
+                    data = FirebaseDatabase.getInstance().getReference().child("reputacaoVaga").child(keyupdateVaga);
+
 
 
                     switch (newState) {
                         case BottomSheetBehavior.STATE_HIDDEN:
 
+
                             break;
                         case BottomSheetBehavior.STATE_EXPANDED:
+
+
+
+                            myRetingBar.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    float valor;
+                                    valor = myRetingBar.getRating();
+                                    Toast.makeText(context, "Valor clicado" + valor, Toast.LENGTH_LONG).show();
+                                    pont.put(keyUsuarioLogado, valor);
+
+                                    data.updateChildren(pont);
+                                    buscaReputacao();
+
+
+
+                                }
+                            });
+
+
                             disponibilidadeVagaDataBase();
+                            SimpleRatingBar.AnimationBuilder builder = myRetingBar.getAnimationBuilder()
+                                    .setRatingTarget(4)
+                                    .setDuration(1500)
+                                    .setAnimatorListener(new Animator.AnimatorListener() {
+                                        @Override
+                                        public void onAnimationStart(Animator animator) {
+
+                                        }
+
+                                        @Override
+                                        public void onAnimationEnd(Animator animator) {
+
+                                            atualizaRatingBar();
+
+
+
+                                        }
+
+                                        @Override
+                                        public void onAnimationCancel(Animator animator) {
+
+                                        }
+
+                                        @Override
+                                        public void onAnimationRepeat(Animator animator) {
+
+                                        }
+                                    })
+                                    .setInterpolator(new BounceInterpolator());
+                            builder.start();
 
 
                             StatusVaga.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -669,6 +731,7 @@ public class MenuActivity extends AppCompatActivity
 
                             fab.show(); // exibindo o botão de pesquisa
 
+
                             break;
                         case BottomSheetBehavior.STATE_DRAGGING:
 
@@ -692,11 +755,94 @@ public class MenuActivity extends AppCompatActivity
 
 
     }
+    private void buscaReputacao(){
+        final DatabaseReference  data1;
+        data1 = FirebaseDatabase.getInstance().getReference().child("reputacaoVaga").child(keyupdateVaga);
+        pontuacaoo.clear();
+        myRetingreputacao.setText("");
+
+        data1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    pontuacaoo.put(d.getKey(), d.getValue());
+                    Toast.makeText(context, "" + pontuacaoo.toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void atualizaRatingBar() {
+        boolean resp = pontuacaoo.containsKey(keyUsuarioLogado);
+
+        Object a = pontuacaoo.get(keyUsuarioLogado);
+        if(a != null){
+            Float yy = eFloat(a.toString());
+
+            if (!resp) {
+                myRetingBar.setRating(0);
+                myRetingreputacao.setText(0);
+
+
+
+                }else {
+                if(yy != null ){
+                    myRetingBar.setRating(yy);
+
+                }
+
+        }
+
+        int cont=0;
+        float resultPontVaga= 0;
+        Set<String> chaves = pontuacaoo.keySet();
+        for (String c : chaves){
+            cont= cont +1;
+            if(c!= null){
+                Object re = pontuacaoo.get(c);
+                if(re!= null){
+                    float ret = eFloat(re.toString());
+                    resultPontVaga =resultPontVaga+ret;
+                }
+
+                Toast.makeText(context, "String"+re.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        }
+        Float cc = resultPontVaga;
+        cc = (cc/cont);
+        myRetingreputacao.setText(String.valueOf(cc));
+        }
+
+
+    }
+
+    private Float eFloat(String a){
+        try{
+            Float retorno;
+           retorno = Float.parseFloat(a);
+//            Toast.makeText(context, "é numero Flutuante"+retorno, Toast.LENGTH_SHORT).show();
+            return retorno;
+
+
+        }catch (NumberFormatException e){
+
+        }
+        return null;
+    }
 
     private void vagaIndisponivel() {
 
-        for (LocalVaga v : arrayLocal){
-            if(v.getId() == keyupdateVaga){
+        for (LocalVaga v : arrayLocal) {
+            if (v.getId() == keyupdateVaga) {
 
             }
         }
@@ -1161,6 +1307,7 @@ public class MenuActivity extends AppCompatActivity
 
 
                 atualizarMapa();
+
                 positionMarker = marker.getPosition();
 
                 // RECUPERANDO O ID  DA VAGA CLICADA PARA VERIFICAR A DISPONIBILIDADE
@@ -1172,6 +1319,7 @@ public class MenuActivity extends AppCompatActivity
 
                     }
                 }
+                buscaReputacao();
 
                 if (marker.getSnippet() != null) { // validando o clik no  indicador da Localização
 
