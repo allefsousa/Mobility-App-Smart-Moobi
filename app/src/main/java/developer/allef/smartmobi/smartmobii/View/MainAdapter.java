@@ -139,7 +139,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             final int likesCount = dataSnapshot.child("contadorLikes").getValue(Integer.class);
             FirebaseAuth auth;
             auth = FirebaseAuth.getInstance();
-           final String idd =  auth.getCurrentUser().getUid();
+            final String idd =  auth.getCurrentUser().getUid();
             Log.d("Allef", "render: " + idd);
 
             textView.setText(dataSnapshot.child("legenda").getValue(String.class));
@@ -214,45 +214,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             }
 
             verificalike(key,idd);// FIXME: 23/10/2017  como estava verificalike(key,userId)
-//
-//            likedRef = FirebaseDatabase.getInstance().getReference("post_likes/" + userId + "/" + dataSnapshot.getKey());
-//            likeValueEventListener = new ValueEventListener() {
-//                @Override
-//                public void onDataChange(final DataSnapshot dataSnapshot) {
-//                    if (dataSnapshot.exists() && dataSnapshot.getValue(Boolean.class)) {
-//                        if(userId.equals(dataSnapshot.getValue()))
-//                        likeImageView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                final DatabaseReference postLikesCountRef = FirebaseDatabase.getInstance().getReference("feed/" + dataSnapshot.getKey() + "/contadorLikes");
-//                                postLikesCountRef.runTransaction(new Transaction.Handler() {
-//                                    @Override
-//                                    public Transaction.Result doTransaction(MutableData mutableData) {
-//
-//
-//                                        likedRef.setValue(false);
-//                                        postLikesCountRef.setValue(mutableData.getValue(Integer.class) - 1);
-//                                        return null;
-//                                    }
-//
-//                                    @Override
-//                                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-//
-//                                    }
-//                                });
-//                            }
-//                        });
-//
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//
-//            };
-//            likedRef.addValueEventListener(likeValueEventListener);
+
 
 
         }

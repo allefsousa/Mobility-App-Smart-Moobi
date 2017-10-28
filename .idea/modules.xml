@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmartMobii.iml" filepath="$PROJECT_DIR$/SmartMobii.iml" />
+      <module fileurl="file://C:\Users\allef\Desktop\Nova pasta (2)\smartmobi\SmartMobii.iml" filepath="C:\Users\allef\Desktop\Nova pasta (2)\smartmobi\SmartMobii.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/smartmobi.iml" filepath="$PROJECT_DIR$/smartmobi.iml" />
     </modules>

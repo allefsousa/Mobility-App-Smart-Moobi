@@ -94,7 +94,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 import butterknife.BindView;
@@ -408,6 +407,10 @@ public class MenuActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Analisa a opção selecionada e define qual o filtro deve aplicar as vagas
+     * @param view
+     */
     private void checkBoxClick(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
@@ -451,6 +454,9 @@ public class MenuActivity extends AppCompatActivity
     }
 
 
+    /**
+     * configurando a cor do Fab Quando o mapa for Noite (Escuro)
+     */
     private void configFabClaro() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.drawable.ic_filterbranco);
@@ -458,6 +464,9 @@ public class MenuActivity extends AppCompatActivity
         fab.setRippleColor(color1);
     }
 
+    /**
+     * configurando a cor do Fab quando o mapa for Dia (Claro)
+     */
     private void configFabEscuro() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.drawable.ic_filter);
@@ -465,6 +474,9 @@ public class MenuActivity extends AppCompatActivity
         fab.setRippleColor(color1);
     }
 
+    /**
+     * configurando a toolbar para dia e Noite
+     */
     private void configToolbarClaro() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -479,12 +491,15 @@ public class MenuActivity extends AppCompatActivity
     }
 
 
+    /**
+     * função responsavel por verificar se a vaga ja esta ocupada ou disponivel para ser utilizada
+     */
     private void disponibilidadeVagaDataBase() {
         DatabaseReference data;
 
 
         if (keyupdateVaga != null) {
-            // FIXME: 27/08/2017 mudar referencia do no quando mudar o banco 
+            // FIXME: 27/08/2017 mudar referencia do no quando mudar o banco
             data = FirebaseDatabase.getInstance().getReference().child(noBanco).child(keyupdateVaga);
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -525,6 +540,12 @@ public class MenuActivity extends AppCompatActivity
 
     }
 
+
+    /**
+     * Creando o menu definindo as cores clara e escura conforme as horas
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -545,6 +566,8 @@ public class MenuActivity extends AppCompatActivity
         return true;
     }
 
+
+
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
@@ -558,21 +581,22 @@ public class MenuActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * função para connectar ao serviço de google Places e trazer o Places Addres(Endereços)
+     * para que eles posam ser Buscados
+     */
     private void openPlacesAddress() {
         try {
-            // The autocomplete activity requires Google Play Services to be available. The intent
-            // builder checks this and throws an exception if it is not the case.
+
             Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .build(this);
             startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
         } catch (GooglePlayServicesRepairableException e) {
-            // Indicates that Google Play Services is either not installed or not up to date. Prompt
-            // the user to correct the issue.
+
             GoogleApiAvailability.getInstance().getErrorDialog(this, e.getConnectionStatusCode(),
                     0 /* requestCode */).show();
         } catch (GooglePlayServicesNotAvailableException e) {
-            // Indicates that Google Play Services is not available and the problem is not easily
-            // resolvable.
+
             String message = "Google Play Services Não Esta Disponivel " +
                     GoogleApiAvailability.getInstance().getErrorString(e.errorCode);
 
@@ -581,6 +605,10 @@ public class MenuActivity extends AppCompatActivity
         }
     }
 
+
+    /**
+     * Iniciando o menu oculto
+     */
 
     private void initBottomSheet() {
         nestedScrollView = (NestedScrollView) findViewById(R.id.bottom_sheet);
@@ -600,10 +628,9 @@ public class MenuActivity extends AppCompatActivity
                 public void onStateChanged(@NonNull View bottomSheet, int newState) {
                     // passando a altura novamente para zero para que ele feche por completo
                     bottomSheetBehavior.setPeekHeight(0);
-                    final Map<String, Float> pontuacao = new HashMap<>();
                     final Map<String, Object> pont = new HashMap<>();
 
-                    data = FirebaseDatabase.getInstance().getReference().child("reputacaoVaga").child(keyupdateVaga);
+                    data = FirebaseDatabase.getInstance().getReference().child("reputacaolocal").child(keyupdateVaga);
 
 
 
@@ -669,7 +696,7 @@ public class MenuActivity extends AppCompatActivity
                             StatusVaga.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                                    // TODO: 11/09/2017 criar uma nova instancia de bd para ver se otimiza o tempo de marcação da vaga 
+                                    // TODO: 11/09/2017 criar uma nova instancia de bd para ver se otimiza o tempo de marcação da vaga
 
                                     if (b) {
                                         for (LocalVaga l : arrayLocal) {
@@ -755,6 +782,10 @@ public class MenuActivity extends AppCompatActivity
 
 
     }
+
+    /**
+     * função responsavel por buscar a reputacao da vaga no Firebase
+     */
     private void buscaReputacao(){
         final DatabaseReference  data1;
         data1 = FirebaseDatabase.getInstance().getReference().child("reputacaoVaga").child(keyupdateVaga);
@@ -793,33 +824,33 @@ public class MenuActivity extends AppCompatActivity
 
 
 
-                }else {
+            }else {
                 if(yy != null ){
                     myRetingBar.setRating(yy);
 
                 }
 
-        }
-
-        int cont=0;
-        float resultPontVaga= 0;
-        Set<String> chaves = pontuacaoo.keySet();
-        for (String c : chaves){
-            cont= cont +1;
-            if(c!= null){
-                Object re = pontuacaoo.get(c);
-                if(re!= null){
-                    float ret = eFloat(re.toString());
-                    resultPontVaga =resultPontVaga+ret;
-                }
-
-                Toast.makeText(context, "String"+re.toString(), Toast.LENGTH_SHORT).show();
-
             }
-        }
-        Float cc = resultPontVaga;
-        cc = (cc/cont);
-        myRetingreputacao.setText(String.valueOf(cc));
+
+            int cont=0;
+            float resultPontVaga= 0;
+            Set<String> chaves = pontuacaoo.keySet();
+            for (String c : chaves){
+                cont= cont +1;
+                if(c!= null){
+                    Object re = pontuacaoo.get(c);
+                    if(re!= null){
+                        float ret = eFloat(re.toString());
+                        resultPontVaga =resultPontVaga+ret;
+                    }
+
+                    Toast.makeText(context, "String"+re.toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+            Float cc = resultPontVaga;
+            cc = (cc/cont);
+            myRetingreputacao.setText(String.valueOf(cc));
         }
 
 
@@ -828,7 +859,7 @@ public class MenuActivity extends AppCompatActivity
     private Float eFloat(String a){
         try{
             Float retorno;
-           retorno = Float.parseFloat(a);
+            retorno = Float.parseFloat(a);
 //            Toast.makeText(context, "é numero Flutuante"+retorno, Toast.LENGTH_SHORT).show();
             return retorno;
 
@@ -1085,7 +1116,9 @@ public class MenuActivity extends AppCompatActivity
             userLogado.setIdUsuario(mAuth.getCurrentUser().getUid());
             userLogado.setNome(mAuth.getCurrentUser().getDisplayName());
             userLogado.setEmail(mAuth.getCurrentUser().getEmail());
-            userLogado.setUrlPhto(mAuth.getCurrentUser().getPhotoUrl().toString());
+            if(mAuth.getCurrentUser().getPhotoUrl() != null){
+                userLogado.setUrlPhto(mAuth.getCurrentUser().getPhotoUrl().toString());
+            }
             dataUser.child(keyUsuarioLogado).setValue(userLogado);
 
             /**

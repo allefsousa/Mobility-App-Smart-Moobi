@@ -96,32 +96,31 @@ public class IntroActivity extends MaterialIntroActivity {
 //
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            addSlide(new SlideFragmentBuilder()
-                            .backgroundColor(R.color.colorPrimary)
-                            .buttonsColor(R.color.colorAccent)
-                            .possiblePermissions(arrayPer)
-                            .neededPermissions(arrayPer)
-                            .title("Permisões")
-                            .description("Para Um melhor desempenho é necessarios habilitar alguns recursos do dispositivo.")
-                            .build(),
-                    new MessageButtonBehaviour(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            showMessage("Impossivel executar app sem as permissões necessarias.");
-                        }
-                    }, "Verificar"));
+        addSlide(new SlideFragmentBuilder()
+                        .backgroundColor(R.color.colorPrimary)
+                        .buttonsColor(R.color.colorAccent)
+                        .possiblePermissions(arrayPer)
+                        .neededPermissions(arrayPer)
+                        .title("Permisões")
+                        .description("Para Um melhor desempenho é necessarios habilitar alguns recursos do dispositivo.")
+                        .build(),
+                new MessageButtonBehaviour(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showMessage("Impossivel executar app sem as permissões necessarias.");
+                    }
+                }, "Verificar"));
 
 
-        }else{
-            addSlide(new SlideFragmentBuilder()
-                    .backgroundColor(R.color.primaryColor)
-                    .buttonsColor(R.color.introback)
-                    .title("Smart Mobi")
-                    .description("Aplicativo tem como base exibir vagas de automoveis preferenciais e Rampas de acessibilidade a cadeirantes.")
-                    .build());
 
-        }
+        addSlide(new SlideFragmentBuilder()
+                .backgroundColor(R.color.primaryColor)
+                .buttonsColor(R.color.introback)
+                .title("Smart Mobi")
+                .description("Aplicativo tem como base exibir vagas de automoveis preferenciais e Rampas de acessibilidade a cadeirantes.")
+                .build());
+
+
     }
 
 
