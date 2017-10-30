@@ -1,4 +1,4 @@
-package developer.allef.smartmobi.smartmobii;
+package developer.allef.smartmobi.smartmobii.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+
+import developer.allef.smartmobi.smartmobii.R;
 
 public class PlaceAdress extends AppCompatActivity {
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;

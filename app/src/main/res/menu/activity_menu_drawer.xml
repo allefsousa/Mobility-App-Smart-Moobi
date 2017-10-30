@@ -14,10 +14,6 @@
         android:title="@string/AdicionarvagasEnd" />
 
 
-    <item
-        android:id="@+id/config"
-        android:icon="@drawable/ic_cog"
-        android:title="Configurações" />
     </group>
 
     <group android:id="@+id/appsobre"

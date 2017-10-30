@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    tools:context="developer.allef.smartmobi.smartmobii.View.EntrarEmContatoActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/ipnNomee"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Nome" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ipnNomee"
+        android:id="@+id/inpEmaiil"
+        android:layout_marginTop="20dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email" />
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inpmens"
+        android:layout_below="@id/inpEmaiil"
+        android:layout_marginTop="20dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/mensagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Mensagem" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inpmens"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@color/colorAccent"
+        android:drawableLeft="@drawable/ic_email"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Enviar" />
+</RelativeLayout>

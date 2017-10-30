@@ -103,7 +103,6 @@ import developer.allef.smartmobi.smartmobii.Helper.monitorHora;
 import developer.allef.smartmobi.smartmobii.Helper.webViewPoliticaActivity;
 import developer.allef.smartmobi.smartmobii.Model.LocalVaga;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
-import developer.allef.smartmobi.smartmobii.PlaceAdress;
 import developer.allef.smartmobi.smartmobii.PlacePickeeer;
 import developer.allef.smartmobi.smartmobii.R;
 
@@ -975,12 +974,11 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.navmapslvagas) {
             startActivity(new Intent(context, FeedActivity.class));
 
-        } else if (id == R.id.config) {
-            startActivity(new Intent(context, PlaceAdress.class));
-
         } else if (id == R.id.entrarcontato) {
+            startActivity(new Intent(context, EntrarEmContatoActivity.class));
 
         } else if (id == R.id.sobre) {
+            startActivity(new Intent(context,SobreActivity.class));
 
 
         } else if (id == R.id.politica) {

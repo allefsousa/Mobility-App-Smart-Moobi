@@ -1,21 +1,35 @@
 package developer.allef.smartmobi.smartmobii.View;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.KeyboardShortcutInfo;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.QuickContactBadge;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,8 +51,7 @@ import butterknife.ButterKnife;
 import developer.allef.smartmobi.smartmobii.R;
 
 
-public class PhoneAuthActivity extends AppCompatActivity implements
-        View.OnClickListener {
+public class PhoneAuthActivity extends AppCompatActivity  {
 
     EditText mPhoneNumberField, mVerificationField;
     Button mStartButton, mVerifyButton;
@@ -52,6 +65,8 @@ public class PhoneAuthActivity extends AppCompatActivity implements
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     String mVerificationId;
+    AlertDialog alert11;
+     boolean resposta;
 
 
 
@@ -72,14 +87,41 @@ public class PhoneAuthActivity extends AppCompatActivity implements
         mResendButton = (TextView) findViewById(R.id.button_resend);
 
 
+
         mPhoneNumberField.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         mVerificationField.setVisibility(View.INVISIBLE);
         mVerifyButton.setVisibility(View.INVISIBLE);
         mResendButton.setVisibility(View.INVISIBLE);
+        mStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!validatePhoneNumber()) {
+                    return;
+                }
+              //  exemplo_alerta();
+                dialogNumeroCorreto();
 
-        mStartButton.setOnClickListener(this);
-        mVerifyButton.setOnClickListener(this);
-        mResendButton.setOnClickListener(this);
+
+
+            }
+        });
+        mPhoneNumberField.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if ((keyEvent != null && (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (i == EditorInfo.IME_ACTION_DONE)) {
+                    InputMethodManager imm = (InputMethodManager) PhoneAuthActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(mPhoneNumberField.getWindowToken(), 0);
+
+                    dialogNumeroCorreto();
+                }
+                return false;
+            }
+        });
+
+//        mStartButton.setOnClickListener(this);
+//        mVerifyButton.setOnClickListener(this);
+//        mResendButton.setOnClickListener(this);
+
 
         mAuth = FirebaseAuth.getInstance();
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -107,8 +149,33 @@ public class PhoneAuthActivity extends AppCompatActivity implements
                                    PhoneAuthProvider.ForceResendingToken token) {
                 mVerificationId = verificationId;
                 mResendToken = token;
+
             }
+
+
+
         };
+
+      mPhoneNumberField.setOnClickListener(new View.OnClickListener() {
+
+          @Override
+          public void onClick(View view) {
+              bar.setVisibility(View.INVISIBLE);
+              mPhoneNumberField.setCursorVisible(true);
+          }
+      });
+    }
+
+    private void verificarNumeroCorreto() {
+        mPhoneNumberField.setInputType(InputType.TYPE_NULL);
+        mPhoneNumberField.clearFocus();
+        mPhoneNumberField.setFocusableInTouchMode(false);
+        mPhoneNumberField.setCursorVisible(false);
+        startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+        bar.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorAccent));
+        bar.setVisibility(View.VISIBLE);
+        bar.setIndeterminate(true);
+
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -127,8 +194,14 @@ public class PhoneAuthActivity extends AppCompatActivity implements
                             finish();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                mVerificationField.setError("Codigo Invalido.");
+                                Snackbar.make(findViewById(android.R.id.content), "Codigo Invalido.",
+                                        Snackbar.LENGTH_SHORT).show();
+                                bar.setVisibility(View.INVISIBLE);
+
                             }
+
+
+
                         }
                     }
                 });
@@ -178,39 +251,43 @@ public class PhoneAuthActivity extends AppCompatActivity implements
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.button_start_verification:
-                if (!validatePhoneNumber()) {
-                    return;
-                }
-                mPhoneNumberField.clearFocus();
-                mPhoneNumberField.setFocusableInTouchMode(false);
-                mPhoneNumberField.setCursorVisible(false);
+    public void dialogNumeroCorreto(){
+
+        String titulo = "Confirmação de Numero.";
+        String Mensagem = "O Numero de verificação esta correto ?" + mPhoneNumberField.getText();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(titulo);
+        builder.setIcon(R.drawable.compass);
+        builder.setMessage(Mensagem);
 
 
-                startPhoneNumberVerification(mPhoneNumberField.getText().toString());
-                bar.setDrawingCacheBackgroundColor(getResources().getColor(R.color.com_facebook_blue));
-                bar.setVisibility(View.VISIBLE);
-                bar.setIndeterminate(true);
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
 
-                break;
-            case R.id.button_verify_phone:
-                String code = mVerificationField.getText().toString();
-                if (TextUtils.isEmpty(code)) {
-                    mVerificationField.setError("Codigo não pode ser vazio.");
-                    return;
-                }
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-                verifyPhoneNumberWithCode(mVerificationId, code);
+                resposta = true;
+                verificarNumeroCorreto();
 
 
-                break;
-            case R.id.button_resend:
-                resendVerificationCode(mPhoneNumberField.getText().toString(), mResendToken);
-                break;
-        }
+                dialogInterface.dismiss();
+
+
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                resposta = false;
+
+                dialogInterface.dismiss();
+
+            }
+        });
+
+         alert11 = builder.create();
+
+         alert11.show();
 
     }
 
