@@ -40,7 +40,6 @@ import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.GoogleDirection;
@@ -90,6 +89,7 @@ import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.jaouan.revealator.Revealator;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -103,7 +103,6 @@ import developer.allef.smartmobi.smartmobii.Helper.monitorHora;
 import developer.allef.smartmobi.smartmobii.Helper.webViewPoliticaActivity;
 import developer.allef.smartmobi.smartmobii.Model.LocalVaga;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
-import developer.allef.smartmobi.smartmobii.PlacePickeeer;
 import developer.allef.smartmobi.smartmobii.R;
 
 
@@ -118,7 +117,10 @@ public class MenuActivity extends AppCompatActivity
     private static final String SELECTED_STYLE = "selected_style";
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
     private static final int NadaFiltrado = 800;
-    private final String noBanco = "teste";
+
+    private final String noBanco = "producao";
+    private final String reputVaga = "reputacaolocal";
+
     Marker LocAtual;
     int verificaCor;
     BottomSheetBehavior bottomSheetBehavior;
@@ -159,6 +161,7 @@ public class MenuActivity extends AppCompatActivity
     Menu myMenu;
     ArrayList<Usuario> ArrayUsuario = new ArrayList<>();
     Map<String, Object> pontuacaoo = new HashMap<>();
+    View theWonderfulButton;
     private GoogleMap mgoogleMap;
     private GoogleApiClient mgoogleApiClient;
     private Handler mhandler;
@@ -185,7 +188,7 @@ public class MenuActivity extends AppCompatActivity
     private ArrayList<LocalVaga> arrayLocal = new ArrayList<>();
     private ArrayList<LocalVaga> arrayUpdateStatus = new ArrayList<>();
     private View theAwesomeView;
-    DatabaseReference data;
+    private DatabaseReference data;
 
 
     //endregion
@@ -256,9 +259,8 @@ public class MenuActivity extends AppCompatActivity
         });
 
 
-        if (savedInstanceState != null) {
-            int mSelectedStyleId = savedInstanceState.getInt(SELECTED_STYLE);
-        }
+
+
         mdeveexibirdialog = savedInstanceState == null;
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -300,6 +302,7 @@ public class MenuActivity extends AppCompatActivity
                 if (myMenu != null) {
                     myMenu.findItem(R.id.action_search).setEnabled(false);
                 }
+                mgoogleMap.clear();
 
 
             }
@@ -309,14 +312,8 @@ public class MenuActivity extends AppCompatActivity
         theWonderfulButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Revealator.unreveal(theAwesomeView)
-                        .to(fab)
-                        .withCurvedTranslation().start();
+                filtroFechado();
 
-                atualizarMapa();
-                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                myMenu.findItem(R.id.action_search).setEnabled(true);
-                fab.show();
 
             }
         });
@@ -405,9 +402,21 @@ public class MenuActivity extends AppCompatActivity
 
     }
 
+    private void filtroFechado() {
+        Revealator.unreveal(theAwesomeView)
+                .to(fab)
+                .withCurvedTranslation().start();
+
+        atualizarMapa();
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        myMenu.findItem(R.id.action_search).setEnabled(true);
+        fab.show();
+    }
+
 
     /**
      * Analisa a opção selecionada e define qual o filtro deve aplicar as vagas
+     *
      * @param view
      */
     private void checkBoxClick(View view) {
@@ -530,7 +539,7 @@ public class MenuActivity extends AppCompatActivity
 
             // TODO: 27/08/2017  se for igual a do usuario logado deixa visivel
             /**
-             * se for em br54anco ou nulo deixa visivel , agora se for diferente de nulo e do usuario logado disabilita
+             * se for em branco ou nulo deixa visivel , agora se for diferente de nulo e do usuario logado disabilita
              */
 
 
@@ -542,6 +551,7 @@ public class MenuActivity extends AppCompatActivity
 
     /**
      * Creando o menu definindo as cores clara e escura conforme as horas
+     *
      * @param menu
      * @return
      */
@@ -564,7 +574,6 @@ public class MenuActivity extends AppCompatActivity
 
         return true;
     }
-
 
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -599,8 +608,7 @@ public class MenuActivity extends AppCompatActivity
             String message = "Google Play Services Não Esta Disponivel " +
                     GoogleApiAvailability.getInstance().getErrorString(e.errorCode);
 
-            Log.e(TAG, message);
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            // snakbar
         }
     }
 
@@ -612,7 +620,6 @@ public class MenuActivity extends AppCompatActivity
     private void initBottomSheet() {
         nestedScrollView = (NestedScrollView) findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(nestedScrollView);
-        Usuario pointsUser = new Usuario();
 
         // altura inicial do botão de detales
         bottomSheetBehavior.setPeekHeight(0);
@@ -629,8 +636,7 @@ public class MenuActivity extends AppCompatActivity
                     bottomSheetBehavior.setPeekHeight(0);
                     final Map<String, Object> pont = new HashMap<>();
 
-                    data = FirebaseDatabase.getInstance().getReference().child("reputacaolocal").child(keyupdateVaga);
-
+                    data = FirebaseDatabase.getInstance().getReference().child(reputVaga).child(keyupdateVaga);
 
 
                     switch (newState) {
@@ -641,18 +647,15 @@ public class MenuActivity extends AppCompatActivity
                         case BottomSheetBehavior.STATE_EXPANDED:
 
 
-
                             myRetingBar.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     float valor;
                                     valor = myRetingBar.getRating();
-                                    Toast.makeText(context, "Valor clicado" + valor, Toast.LENGTH_LONG).show();
                                     pont.put(keyUsuarioLogado, valor);
 
                                     data.updateChildren(pont);
                                     buscaReputacao();
-
 
 
                                 }
@@ -673,7 +676,6 @@ public class MenuActivity extends AppCompatActivity
                                         public void onAnimationEnd(Animator animator) {
 
                                             atualizaRatingBar();
-
 
 
                                         }
@@ -785,9 +787,9 @@ public class MenuActivity extends AppCompatActivity
     /**
      * função responsavel por buscar a reputacao da vaga no Firebase
      */
-    private void buscaReputacao(){
-        final DatabaseReference  data1;
-        data1 = FirebaseDatabase.getInstance().getReference().child("reputacaoVaga").child(keyupdateVaga);
+    private void buscaReputacao() {
+        final DatabaseReference data1;
+        data1 = FirebaseDatabase.getInstance().getReference().child(reputVaga).child(keyupdateVaga);
         pontuacaoo.clear();
         myRetingreputacao.setText("");
 
@@ -796,7 +798,7 @@ public class MenuActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
                     pontuacaoo.put(d.getKey(), d.getValue());
-                    Toast.makeText(context, "" + pontuacaoo.toString(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "" + pontuacaoo.toString(), Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -812,58 +814,64 @@ public class MenuActivity extends AppCompatActivity
 
     private void atualizaRatingBar() {
         boolean resp = pontuacaoo.containsKey(keyUsuarioLogado);
+        DecimalFormat df = new DecimalFormat("0.00");
+        Float cc = null;
 
         Object a = pontuacaoo.get(keyUsuarioLogado);
-        if(a != null){
+        if (a != null) {
             Float yy = eFloat(a.toString());
 
             if (!resp) {
                 myRetingBar.setRating(0);
-                myRetingreputacao.setText(0);
 
 
-
-            }else {
-                if(yy != null ){
+            } else {
+                if (yy != null) {
                     myRetingBar.setRating(yy);
 
+
                 }
 
             }
-
-            int cont=0;
-            float resultPontVaga= 0;
+            int cont = 0;
+            float resultPontVaga = 0;
+            
             Set<String> chaves = pontuacaoo.keySet();
-            for (String c : chaves){
-                cont= cont +1;
-                if(c!= null){
+            for (String c : chaves) {
+                cont = cont + 1;
+                if (c != null) {
                     Object re = pontuacaoo.get(c);
-                    if(re!= null){
+                    if (re != null) {
                         float ret = eFloat(re.toString());
-                        resultPontVaga =resultPontVaga+ret;
+                        resultPontVaga = resultPontVaga + ret;
                     }
 
-                    Toast.makeText(context, "String"+re.toString(), Toast.LENGTH_SHORT).show();
-
                 }
             }
-            Float cc = resultPontVaga;
-            cc = (cc/cont);
-            myRetingreputacao.setText(String.valueOf(cc));
+             cc = resultPontVaga;
+            cc = (cc / cont);
         }
+        if (cc != null){
+            myRetingreputacao.setText(String.valueOf(df.format(cc)));
+        }else {
+            int valor = 0;
+            myRetingreputacao.setText(String.valueOf(valor));
+        }
+
+
 
 
     }
 
-    private Float eFloat(String a){
-        try{
+    private Float eFloat(String a) {
+        try {
             Float retorno;
             retorno = Float.parseFloat(a);
 //            Toast.makeText(context, "é numero Flutuante"+retorno, Toast.LENGTH_SHORT).show();
             return retorno;
 
 
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
 
         }
         return null;
@@ -911,6 +919,14 @@ public class MenuActivity extends AppCompatActivity
     }
 
 
+    /**
+     * metodo responsavel por verificar se a requisição de direções foi executa com sucesso ,
+     * exibir as rotas e os detalhes como tempo e distacia
+     *
+     * @param direction
+     * @param rawBody
+     */
+
     public void onDirectionSuccess(Direction direction, String rawBody) {
         if (direction.isOK()) {
 
@@ -919,6 +935,9 @@ public class MenuActivity extends AppCompatActivity
                 a.getLegList().get(0).getDirectionPoint();
             }
 
+            /**
+             * pegando a lista de direções interando e as exibindo no mapa.
+             */
             for (int i = 0; i < direction.getRouteList().size(); i++) {
                 Route route = direction.getRouteList().get(i);
                 String color = colors[i % colors.length];
@@ -929,6 +948,10 @@ public class MenuActivity extends AppCompatActivity
                 mgoogleMap.addPolyline(DirectionConverter.createPolyline(this, directionPositionList, 5, Color.parseColor(color)));
             }
 
+
+            /**
+             * exibindo os dados na view
+             */
             progressBar.setProgress(100);
             progressBar.setVisibility(View.GONE);
             km.setText("Distancia :" + distancia.getText());
@@ -950,8 +973,11 @@ public class MenuActivity extends AppCompatActivity
 
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (theAwesomeView.isShown()) {
+            filtroFechado();
         } else {
             super.onBackPressed();
+
         }
 
 
@@ -967,7 +993,7 @@ public class MenuActivity extends AppCompatActivity
 
 
         if (id == R.id.nav_camera) {
-            drawer.closeDrawers();
+          //  drawer.closeDrawers();
             // chamando outra tela quando um botão do menu é precionado
             startActivity(new Intent(context, PlacePickeeer.class));
 
@@ -977,8 +1003,9 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.entrarcontato) {
             startActivity(new Intent(context, EntrarEmContatoActivity.class));
 
-        } else if (id == R.id.sobre) {
-            startActivity(new Intent(context,SobreActivity.class));
+        } else if (id == R.id.introducao) {
+            startActivity(new Intent(context, IntroducaoActivity.class));
+
 
 
         } else if (id == R.id.politica) {
@@ -986,21 +1013,16 @@ public class MenuActivity extends AppCompatActivity
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
-        } else if (id == R.id.singout) {
+        }else if(id == R.id.compartilhar) {
+            shareLinkPlayStore();
+
+        }else if (id == R.id.singout) {
             startActivity(new Intent(context, Sing_in.class));
             mAuth.signOut();
             finish();
+            Auth.GoogleSignInApi.signOut(mgoogleApiClient);
 
-            Auth.GoogleSignInApi.signOut(mgoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-                @Override
-                public void onResult(@NonNull Status status) {
-                    if (status.isSuccess()) {
 
-                    } else {
-                        //mensagem de erro ao disconectar e revogar
-                    }
-                }
-            });
         }
 
 
@@ -1015,6 +1037,10 @@ public class MenuActivity extends AppCompatActivity
         super.onPause();
     }
 
+
+    /**
+     * metodo responsavel por verificar o estado do Gps e exibir um alerta para ser ativado ..
+     */
     private void verificarStatusGPS() {
 
         LocationRequest locationRequest = LocationRequest.create();
@@ -1066,6 +1092,9 @@ public class MenuActivity extends AppCompatActivity
     }
 
 
+    /**
+     * ciclo de vida da View
+     */
     @Override
     protected void onStart() {
 
@@ -1114,7 +1143,7 @@ public class MenuActivity extends AppCompatActivity
             userLogado.setIdUsuario(mAuth.getCurrentUser().getUid());
             userLogado.setNome(mAuth.getCurrentUser().getDisplayName());
             userLogado.setEmail(mAuth.getCurrentUser().getEmail());
-            if(mAuth.getCurrentUser().getPhotoUrl() != null){
+            if (mAuth.getCurrentUser().getPhotoUrl() != null) {
                 userLogado.setUrlPhto(mAuth.getCurrentUser().getPhotoUrl().toString());
             }
             dataUser.child(keyUsuarioLogado).setValue(userLogado);
@@ -1142,6 +1171,9 @@ public class MenuActivity extends AppCompatActivity
 
     }
 
+    /**
+     * ciclo de vida da View
+     */
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -1154,7 +1186,6 @@ public class MenuActivity extends AppCompatActivity
 
     private void setSelectedStyle(int i) {
         MapStyleOptions style = null;
-        // Sets the night style via raw resource JSON.
         /**
          * selecionando o tipo de mapa a ser exibido as cores dos mapas com base nos arquivos JSON
          */
@@ -1185,39 +1216,22 @@ public class MenuActivity extends AppCompatActivity
                 mhandler.removeCallbacksAndMessages(null);
                 obterUltimaLocalizacao();
             } else {
-                Toast.makeText(this, R.string.erro_gps, Toast.LENGTH_LONG).show();
                 finish();
             }
         }
 
-        // Check that the result was from the autocomplete widget.
         if (requestCode == REQUEST_CODE_AUTOCOMPLETE) {
             if (resultCode == RESULT_OK) {
-                // Get the user's selected place from the Intent.
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 mgoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 16.0f));
                 mgoogleMap.addMarker(new MarkerOptions().position(place.getLatLng())
                         .title("Endereço Pesquisado"));
 
 
-//                // Format the place's details and display them in the TextView.
-//                mPlaceDetailsText.setText(formatPlaceDetails(getResources(), place.getName(),
-//                        place.getId(), place.getAddress(), place.getPhoneNumber(),
-//                        place.getWebsiteUri()));
-//
-//                // Display attributions if required.
-//                CharSequence attributions = place.getAttributions();
-//                if (!TextUtils.isEmpty(attributions)) {
-//                    mPlaceAttribution.setText(Html.fromHtml(attributions.toString()));
-//                } else {
-//                    mPlaceAttribution.setText("");
-//                }
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.e(TAG, "Error: Status = " + status.toString());
             } else if (resultCode == RESULT_CANCELED) {
-                // Indicates that the activity closed before a selection was made. For example if
-                // the user pressed the back button.
             }
         }
 
@@ -1346,13 +1360,14 @@ public class MenuActivity extends AppCompatActivity
                     LatLng cordenadas = new LatLng(aa.getLatitude(), aa.getLongitude());
                     if (cordenadas.equals(positionMarker)) {
                         keyupdateVaga = aa.getId();
-                        Toast.makeText(context, "keeey" + keyupdateVaga, Toast.LENGTH_LONG).show();
+                        //  Toast.makeText(context, "keeey" + keyupdateVaga, Toast.LENGTH_LONG).show();
 
                     }
                 }
-                buscaReputacao();
 
-                if (marker.getSnippet() != null) { // validando o clik no  indicador da Localização
+
+                if (marker.getSnippet() != null) {
+                    buscaReputacao();
 
                     switch (marker.getSnippet()) {
                         case "idoso":
@@ -1366,6 +1381,8 @@ public class MenuActivity extends AppCompatActivity
                         case "vaga":
                             tipoV.setText("Vaga Automovel Preferencial");
                             StatusVaga.setVisibility(View.VISIBLE);
+                            break;
+                        case "Endereço Pesquisado":
                             break;
                     }
 
@@ -1431,7 +1448,26 @@ public class MenuActivity extends AppCompatActivity
 
     }
 
+    void shareLinkPlayStore() {
+        try {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT, "Smart Mobi");
+            String sAux = "\nEu recomendo este aplicativo, muito bom.\n\n";
+            sAux = sAux + "https://play.google.com/store/apps/details?id=developer.allef.smartmobi.smartmobii \n\n";
+            i.putExtra(Intent.EXTRA_TEXT, sAux);
+            startActivity(Intent.createChooser(i, "Selecione onde deseja Compartilhar"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+    }
 
+
+    /**
+     * metodo responsavel por adicionar os marcadores ao mapa percorrendo uma lista de locais
+     * trazidos do firebase.
+     * cada vaga tem um atributo tipo que os diferenciam para exibir cores e icones diferentes
+     */
     private void addmMarker() {
         int retorno = ValidadeFiltro; // retorna valor do filtro quando selecionado
 
@@ -1546,7 +1582,7 @@ public class MenuActivity extends AppCompatActivity
 
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
         mgoogleMap = googleMap;
         mgoogleMap.getUiSettings().setMapToolbarEnabled(false);
         mgoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
@@ -1555,6 +1591,20 @@ public class MenuActivity extends AppCompatActivity
         mgoogleMap.getUiSettings().setAllGesturesEnabled(true);
 
         defCorMapa();
+
+//        //region MockData
+//        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+//            @Override
+//            public void onMapLongClick(LatLng latLng) {
+//            LocalVaga l = Locais.mock(latLng);
+//            arrayLocal.add(l);
+//            addmMarker();
+//                Snackbar.make(findViewById(android.R.id.content), "Localização Adicionada com Sucesso !! ",
+//                        Snackbar.LENGTH_LONG).show();
+//
+//            }
+//        });
+//        //endregion
 
 
     }
@@ -1606,6 +1656,5 @@ public class MenuActivity extends AppCompatActivity
         super.onSaveInstanceState(outState, outPersistentState);
         outState.putBoolean(Extra_Dialog, mdeveexibirdialog);
     }
-
 
 }

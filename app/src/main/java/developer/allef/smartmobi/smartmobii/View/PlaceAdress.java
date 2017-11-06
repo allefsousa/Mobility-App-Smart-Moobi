@@ -34,13 +34,12 @@ public class PlaceAdress extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: obter informações sobre o local selecionado.
-                Log.i("Allef", "Place: " + place.getName());
+
             }
 
             @Override
             public void onError(Status status) {
                 // TODO: Solucionar o erro.
-                Log.i("Allef", "Ocorreu um erro: " + status);
             }
         });
 

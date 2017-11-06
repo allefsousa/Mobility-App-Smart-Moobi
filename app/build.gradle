@@ -24,8 +24,8 @@ android {
         applicationId "developer.allef.smartmobi.smartmobii"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 7
-        versionName "1.6"
+        versionCode 8
+        versionName "1.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -46,6 +46,7 @@ dependencies {
     }
     compile 'com.android.support:support-compat:26.+'
     compile 'com.daimajia.easing:library:2.0@aar'
+
     compile 'com.daimajia.androidanimations:library:2.3@aar'
     compile 'com.android.support:design:26.+'
     compile 'com.google.android.gms:play-services-maps:11.0.0'

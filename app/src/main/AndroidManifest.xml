@@ -106,6 +106,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Intro" />
         <activity
+            android:name=".View.IntroducaoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Intro" />
+        <activity
             android:name=".View.EmailCadastro"
             android:theme="@style/AppTheme.OverlayToolbar">
             <meta-data
@@ -114,7 +118,7 @@
         </activity>
         <activity android:name=".View.EmailLogin" />
         <activity
-            android:name=".PlacePickeeer"
+            android:name=".View.PlacePickeeer"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -139,8 +143,17 @@
         <activity
             android:name=".Helper.webViewPoliticaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.EntrarEmContatoActivity" />
-        <activity android:name=".View.SobreActivity"></activity>
+        <activity android:name=".View.EntrarEmContatoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
+        </activity>
+        <activity android:name=".View.SobreActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="developer.allef.smartmobi.smartmobii.View.MenuActivity" />
+        </activity>
     </application>
 
 </manifest>

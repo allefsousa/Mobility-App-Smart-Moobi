@@ -1,4 +1,4 @@
-package developer.allef.smartmobi.smartmobii.View;
+package developer.allef.smartmobi.smartmobii.Adapters;
 
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +19,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import developer.allef.smartmobi.smartmobii.Model.Usuario;
@@ -29,7 +28,7 @@ import developer.allef.smartmobi.smartmobii.R;
  * Created by allef on 28/08/2017.
  */
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
+public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
     SortedList<DataSnapshot> dataset = new SortedList<DataSnapshot>(DataSnapshot.class, new SortedList.Callback<DataSnapshot>() {
         @Override
         public int compare(DataSnapshot data1, DataSnapshot data2) {
@@ -68,13 +67,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     });
 
     @Override
-    public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FeedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d("Recycler", "onCreateViewHolder");
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(FeedAdapter.ViewHolder holder, int position) {
         holder.reset();
         holder.render(dataset.get(position));
     }
@@ -110,6 +109,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         CircleImageView fotoperfil;
         TextView nomeusurio;
         TextView dataUsuario;
+
         Boolean flagLike;
 
         public ViewHolder(View v) {
@@ -131,7 +131,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             likesCountTextView.setText("");
         }
 
-        public void render( DataSnapshot dataSnapshot) {
+        public void render(DataSnapshot dataSnapshot) {
 
             final String userId = (dataSnapshot.child("userId").getValue(String.class));
             String photouri = (dataSnapshot.child("photoperfil").getValue(String.class));
@@ -139,10 +139,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             final int likesCount = dataSnapshot.child("contadorLikes").getValue(Integer.class);
             FirebaseAuth auth;
             auth = FirebaseAuth.getInstance();
-            final String idd =  auth.getCurrentUser().getUid();
-            Log.d("Allef", "render: " + idd);
+            final String idd = auth.getCurrentUser().getUid();
+
 
             textView.setText(dataSnapshot.child("legenda").getValue(String.class));
+
+
             nomeusurio.setText(dataSnapshot.child("nomeUserPost").getValue(String.class));
             String dat = dataSnapshot.child("dataPost").getValue(String.class);
             String[] arraydat = dat.split("-");
@@ -202,19 +204,17 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             likeImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    addLike(key, idd,likesCount);
-                    verificalike(key,idd);                }
+                    addLike(key, idd, likesCount);
+                    verificalike(key, idd);
+                }
             });// FIXME: 23/10/2017  user logado key Auth
-
-
 
 
             if (likesCount > 0) {
                 likesCountTextView.setText("" + likesCount);
             }
 
-            verificalike(key,idd);// FIXME: 23/10/2017  como estava verificalike(key,userId)
-
+            verificalike(key, idd);// FIXME: 23/10/2017  como estava verificalike(key,userId)
 
 
         }
@@ -224,10 +224,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             d.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child(k).hasChild(id)){
+                    if (dataSnapshot.child(k).hasChild(id)) {
                         // ta curtido
                         likeImageView.setImageResource(R.drawable.ic_favorite_black_24dp);
-                    }else{
+                    } else {
                         // nao ta curtido
                         likeImageView.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                     }
@@ -257,25 +257,23 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
                             likedRef.child(key).child(userId).removeValue();
                             flagLike = false;
-                            calculo[0] = valbd -1;
+                            calculo[0] = valbd - 1;
                             postLikesCountRef.setValue(calculo[0]);
 
                         } else {
                             // TODO: 23/10/2017 fazer update e nao inserir pois esta apagando os outros likes 
-                            Map<String,Object> lik = new HashMap<String, Object>();
-                            lik.put(userId,true);
+                            Map<String, Object> lik = new HashMap<String, Object>();
+                            lik.put(userId, true);
                             likedRef.child(key).updateChildren(lik); // FIXME: 23/10/2017 update no lugar de setvalue
                             flagLike = false;
 
-                            calculo[0] = valbd +1;
+                            calculo[0] = valbd + 1;
                             postLikesCountRef.setValue(calculo[0]);
-
 
 
                         }
 
                     }
-
 
 
                 }

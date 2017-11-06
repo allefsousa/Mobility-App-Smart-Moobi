@@ -24,7 +24,7 @@ public class webViewPoliticaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        web.loadUrl("https://allefsousa.github.io/SmartMobi/");
+        web.loadUrl("https://allefsousa.github.io/SmartMobiPoliticaPrivacidade/");
 
     }
 

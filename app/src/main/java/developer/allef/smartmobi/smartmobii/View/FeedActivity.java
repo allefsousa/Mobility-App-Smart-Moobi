@@ -1,6 +1,7 @@
 package developer.allef.smartmobi.smartmobii.View;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,33 +16,42 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import butterknife.BindColor;
+import butterknife.BindDrawable;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import developer.allef.smartmobi.smartmobii.Adapters.FeedAdapter;
 import developer.allef.smartmobi.smartmobii.R;
 
 public class FeedActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-    MainAdapter mainAdapter;
+    FeedAdapter feedAdapter;
     FloatingActionButton fab;
     private Toolbar tool;
+    @BindColor(R.color.primary_text)
+    int corPreta;
+    @BindDrawable(R.drawable.ic_voltar)
+    Drawable Imagevoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+        ButterKnife.bind(this);
 
         tool = (Toolbar) findViewById(R.id.too);
         setSupportActionBar(tool);
-        getSupportActionBar().setTitle("Time Line");
+        getSupportActionBar().setTitle("Linha do Tempo");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar);
-        tool.setBackgroundColor(getResources().getColor(R.color.primaryDarkColor));
+        getSupportActionBar().setHomeAsUpIndicator(Imagevoltar);
+        tool.setBackgroundColor(corPreta);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mainAdapter = new MainAdapter();
+        feedAdapter = new FeedAdapter();
         LinearLayoutManager layoutManager = new LinearLayoutManager(FeedActivity.this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mainAdapter);
+        recyclerView.setAdapter(feedAdapter);
 
 
 
@@ -49,19 +59,19 @@ public class FeedActivity extends AppCompatActivity {
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildKey) {
-                mainAdapter.addItem(dataSnapshot);
+                feedAdapter.addItem(dataSnapshot);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildKey) {
-                mainAdapter.addItem(dataSnapshot);
+                feedAdapter.addItem(dataSnapshot);
             }
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                mainAdapter.removeItem(dataSnapshot);
+                feedAdapter.removeItem(dataSnapshot);
             }
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String previousChildKey) {
-                mainAdapter.addItem(dataSnapshot);
+                feedAdapter.addItem(dataSnapshot);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -81,10 +91,7 @@ public class FeedActivity extends AppCompatActivity {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                if (newState == RecyclerView.SCROLL_STATE_IDLE)
-//                {
-//                    fab.show();
-//                }
+//
 
                 super.onScrollStateChanged(recyclerView, newState);
             }

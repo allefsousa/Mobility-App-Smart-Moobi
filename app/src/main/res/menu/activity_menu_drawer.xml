@@ -27,13 +27,17 @@
             android:icon="@drawable/ic_email"
             android:title="Entrar em contato" />
         <item
-            android:id="@+id/sobre"
-            android:icon="@drawable/ic_people"
-            android:title="Sobre" />
+            android:id="@+id/introducao"
+            android:icon="@drawable/ic_offline_pin"
+            android:title="Introdução" />
         <item
             android:id="@+id/politica"
             android:icon="@drawable/ic_lock_outline"
             android:title="Politica de privacidade" />
+        <item
+            android:id="@+id/compartilhar"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Compartilhar" />
 
 
         <item

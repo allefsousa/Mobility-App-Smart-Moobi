@@ -1,0 +1,750 @@
+{
+  "NewLikePost" : {
+    "-KxFWljEtTY_bi3_APa-" : {
+      "BaYt6skevuhrNvNY9ahICUtmjbt2" : true
+    },
+    "-KxNod_f0-OoM33sqWtx" : {
+      "BaYt6skevuhrNvNY9ahICUtmjbt2" : true,
+      "xS9GlS8yPbZgf5q2wJhYluV7vJi1" : true,
+      "y9UfU6M3kaeSvmvlJlatX2sJsEK2" : true
+    }
+  },
+  "feed" : {
+    "-KxFWljEtTY_bi3_APa-" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 99,
+      "createdAt" : 1508884570669,
+      "dataPost" : "24-10-2017",
+      "emailUserPost" : "allefsousa_1@hotmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-KxFWljEtTY_bi3_APa-.jpg?alt=media&token=da2f9fb6-24d1-4bcc-8051-290c79afbb04",
+      "legenda" : "😂😂😂",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+      "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+    },
+    "-KxNod_f0-OoM33sqWtx" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 102,
+      "createdAt" : 1509023734718,
+      "dataPost" : "26-10-2017",
+      "emailUserPost" : "allefsousa1@gmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-KxNod_f0-OoM33sqWtx.jpg?alt=media&token=c38de5f8-303b-474a-b2ea-9d7c2d25ccca",
+      "legenda" : "Moto estacionada em vaga preferencial. \numa VERGONHA!!",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg",
+      "userId" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2"
+    },
+    "-Ky1T1tiyh3tZTnWJM4Z" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509722451326,
+      "dataPost" : "03-11-2017",
+      "emailUserPost" : "allefsousa_1@hotmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky1T1tiyh3tZTnWJM4Z.jpg?alt=media&token=ea24dc0c-e2c9-4902-834c-8db3f39ec714",
+      "legenda" : "Carro sem identificação em vaga para deficiente físico.  Isso é Franca😠",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+      "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+    },
+    "-Ky1V0Q1fp7HQwOZmQXw" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509722969554,
+      "dataPost" : "03-11-2017",
+      "emailUserPost" : "allefsousa_1@hotmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky1V0Q1fp7HQwOZmQXw.jpg?alt=media&token=b492c4b4-a177-4c23-a865-032aa71bb354",
+      "legenda" : "Pelo visto parar em lugar proibido é normal 🚫🚫🚫!!",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+      "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+    },
+    "-Ky1WkFH1QzO19qC9DOY" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509723423523,
+      "dataPost" : "03-11-2017",
+      "emailUserPost" : "allefsousa_1@hotmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky1WkFH1QzO19qC9DOY.jpg?alt=media&token=c40efbc3-d4b7-465d-8116-24bcb45955c8",
+      "legenda" : "Moto impedindo a utilização da rampa 😠😠.",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+      "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+    },
+    "-Ky6DitvH8QDWiUTxWN0" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509802324474,
+      "dataPost" : "04-11-2017",
+      "emailUserPost" : "allefsousa_1@hotmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6DitvH8QDWiUTxWN0.jpg?alt=media&token=b5f45dc5-8809-479e-8cf7-1548e741ef63",
+      "legenda" : "Já é normal não respeitar o direito de outras pessoas.#respeito #essavaganaoésua",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+      "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+    },
+    "-Ky6FTTGH3V382IS-_PW" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509802781454,
+      "dataPost" : "04-11-2017",
+      "emailUserPost" : "allefsousa_1@hotmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6FTTGH3V382IS-_PW.jpg?alt=media&token=e84fa955-7c3c-4868-84b5-31499de34e83",
+      "legenda" : "Oque era pra ajudar acaba dificultando ainda mais. Esse degrau não segui o padrão de acessibilidade. Falha da prefeitura.😡",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+      "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+    },
+    "-Ky6HBON6TormTf7TJoR" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509803231702,
+      "dataPost" : "04-11-2017",
+      "emailUserPost" : "allefsousa1@gmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6HBON6TormTf7TJoR.jpg?alt=media&token=68dc3d1f-53c4-4979-b7bd-f0d22f6f4126",
+      "legenda" : "Forma correta !!!👍👍👍👌",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg",
+      "userId" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2"
+    },
+    "-Ky6HzaBETAj3QlRrk-X" : {
+      "contadorComentarios" : 0,
+      "contadorLikes" : 0,
+      "createdAt" : 1509803441418,
+      "dataPost" : "04-11-2017",
+      "emailUserPost" : "allefsousa1@gmail.com",
+      "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6HzaBETAj3QlRrk-X.jpg?alt=media&token=14a41e80-40df-43a0-8315-6fec5f685928",
+      "legenda" : "Se não possui o adesivo não é credenciado. #essavaganaoesua",
+      "nomeUserPost" : "Allef Sousa",
+      "photoperfil" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg",
+      "userId" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2"
+    }
+  },
+  "postUsuario" : {
+    "BaYt6skevuhrNvNY9ahICUtmjbt2" : {
+      "-KxFWljEtTY_bi3_APa-" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1508884570669,
+        "dataPost" : "24-10-2017",
+        "emailUserPost" : "allefsousa_1@hotmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-KxFWljEtTY_bi3_APa-.jpg?alt=media&token=da2f9fb6-24d1-4bcc-8051-290c79afbb04",
+        "legenda" : "😂😂😂",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+        "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+      },
+      "-Ky1T1tiyh3tZTnWJM4Z" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509722451326,
+        "dataPost" : "03-11-2017",
+        "emailUserPost" : "allefsousa_1@hotmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky1T1tiyh3tZTnWJM4Z.jpg?alt=media&token=ea24dc0c-e2c9-4902-834c-8db3f39ec714",
+        "legenda" : "Carro sem identificação em vaga para deficiente físico.  Isso é Franca😠",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+        "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+      },
+      "-Ky1V0Q1fp7HQwOZmQXw" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509722969554,
+        "dataPost" : "03-11-2017",
+        "emailUserPost" : "allefsousa_1@hotmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky1V0Q1fp7HQwOZmQXw.jpg?alt=media&token=b492c4b4-a177-4c23-a865-032aa71bb354",
+        "legenda" : "Pelo visto parar em lugar proibido é normal 🚫🚫🚫!!",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+        "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+      },
+      "-Ky1WkFH1QzO19qC9DOY" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509723423523,
+        "dataPost" : "03-11-2017",
+        "emailUserPost" : "allefsousa_1@hotmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky1WkFH1QzO19qC9DOY.jpg?alt=media&token=c40efbc3-d4b7-465d-8116-24bcb45955c8",
+        "legenda" : "Moto impedindo a utilização da rampa 😠😠.",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+        "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+      },
+      "-Ky6DitvH8QDWiUTxWN0" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509802324474,
+        "dataPost" : "04-11-2017",
+        "emailUserPost" : "allefsousa_1@hotmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6DitvH8QDWiUTxWN0.jpg?alt=media&token=b5f45dc5-8809-479e-8cf7-1548e741ef63",
+        "legenda" : "Já é normal não respeitar o direito de outras pessoas.#respeito #essavaganaoésua",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+        "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+      },
+      "-Ky6FTTGH3V382IS-_PW" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509802781454,
+        "dataPost" : "04-11-2017",
+        "emailUserPost" : "allefsousa_1@hotmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6FTTGH3V382IS-_PW.jpg?alt=media&token=e84fa955-7c3c-4868-84b5-31499de34e83",
+        "legenda" : "Oque era pra ajudar acaba dificultando ainda mais. Esse degrau não segui o padrão de acessibilidade. Falha da prefeitura.😡",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C",
+        "userId" : "BaYt6skevuhrNvNY9ahICUtmjbt2"
+      }
+    },
+    "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2" : {
+      "-KxNod_f0-OoM33sqWtx" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509023734718,
+        "dataPost" : "26-10-2017",
+        "emailUserPost" : "allefsousa1@gmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-KxNod_f0-OoM33sqWtx.jpg?alt=media&token=c38de5f8-303b-474a-b2ea-9d7c2d25ccca",
+        "legenda" : "Moto estacionada em vaga preferencial. \numa VERGONHA!!",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg",
+        "userId" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2"
+      },
+      "-Ky6HBON6TormTf7TJoR" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509803231702,
+        "dataPost" : "04-11-2017",
+        "emailUserPost" : "allefsousa1@gmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6HBON6TormTf7TJoR.jpg?alt=media&token=68dc3d1f-53c4-4979-b7bd-f0d22f6f4126",
+        "legenda" : "Forma correta !!!👍👍👍👌",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg",
+        "userId" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2"
+      },
+      "-Ky6HzaBETAj3QlRrk-X" : {
+        "contadorComentarios" : 0,
+        "contadorLikes" : 0,
+        "createdAt" : 1509803441418,
+        "dataPost" : "04-11-2017",
+        "emailUserPost" : "allefsousa1@gmail.com",
+        "imagem" : "https://firebasestorage.googleapis.com/v0/b/projetomobile-8dbdb.appspot.com/o/posts%2F-Ky6HzaBETAj3QlRrk-X.jpg?alt=media&token=14a41e80-40df-43a0-8315-6fec5f685928",
+        "legenda" : "Se não possui o adesivo não é credenciado. #essavaganaoesua",
+        "nomeUserPost" : "Allef Sousa",
+        "photoperfil" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg",
+        "userId" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2"
+      }
+    }
+  },
+  "post_likes" : {
+    "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2" : {
+      "-KxNod_f0-OoM33sqWtx" : true
+    }
+  },
+  "producao" : {
+    "-Kw2BlwzhxJTmx5Ur2Zj" : {
+      "id" : "-Kw2BlwzhxJTmx5Ur2Zj",
+      "latitude" : -20.544537499999997,
+      "longitude" : -47.41116015624998,
+      "nomeRua" : "Av. Paulino Pucci, 941-1039 - Jardim Francano, Franca - SP, 14405-018, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Kw2BzhM6wm8qU4gq5DH" : {
+      "id" : "-Kw2BzhM6wm8qU4gq5DH",
+      "latitude" : -20.544572499999997,
+      "longitude" : -47.41112890625,
+      "nomeRua" : "Av. Paulino Pucci, 941-1039 - Jardim Francano, Franca - SP, 14405-018, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky1QjDKmh6w2YShwV6W" : {
+      "id" : "-Ky1QjDKmh6w2YShwV6W",
+      "latitude" : -20.534642499999997,
+      "longitude" : -47.41099609375,
+      "nomeRua" : "R. José de Alencar, 1928 - Estacao, Franca - SP, 14405-208, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1Qpvf0UAiapka8Ksk" : {
+      "id" : "-Ky1Qpvf0UAiapka8Ksk",
+      "latitude" : -20.534602499999984,
+      "longitude" : -47.41098046874999,
+      "nomeRua" : "R. José de Alencar, 1932 - Estacao, Franca - SP, 14405-208, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky1R5FueU9Au2ud2V9O" : {
+      "id" : "-Ky1R5FueU9Au2ud2V9O",
+      "latitude" : -20.53376749999999,
+      "longitude" : -47.41131640624998,
+      "nomeRua" : "Rua Voluntários da Franca, 363 - Estacao, Franca - SP, 14405-103, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky1RDdzuq3jKw-2yVWs" : {
+      "id" : "-Ky1RDdzuq3jKw-2yVWs",
+      "latitude" : -20.533887499999985,
+      "longitude" : -47.41137890624999,
+      "nomeRua" : "Rua Voluntários da Franca, 362 - Estacao, Franca - SP, 14405-103, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1RW8SCsowqMOj2rui" : {
+      "id" : "-Ky1RW8SCsowqMOj2rui",
+      "latitude" : -20.53332249999999,
+      "longitude" : -47.413011718749985,
+      "nomeRua" : "Av. Integração, 1992-2190, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky1RcYbyvePGO-LdKM1" : {
+      "id" : "-Ky1RcYbyvePGO-LdKM1",
+      "latitude" : -20.533407500000003,
+      "longitude" : -47.41297265624998,
+      "nomeRua" : "Av. Integração, 1992-2190, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1S90akyzXgAvi4WeA" : {
+      "id" : "-Ky1S90akyzXgAvi4WeA",
+      "latitude" : -20.532822499999988,
+      "longitude" : -47.41316015624999,
+      "nomeRua" : "Av. Integração, 2095 - Estacao, Franca - SP, 14405-265, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1WEqyw2_5iXN5UmC8" : {
+      "id" : "-Ky1WEqyw2_5iXN5UmC8",
+      "latitude" : -20.528587500000008,
+      "longitude" : -47.42842578124997,
+      "nomeRua" : "Rua Francisco Marques, 1771 - Jardim Sao Gabriel, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky1WP9i4QeuoDHh9sf8" : {
+      "id" : "-Ky1WP9i4QeuoDHh9sf8",
+      "latitude" : -20.528532500000004,
+      "longitude" : -47.42843359374997,
+      "nomeRua" : "Rua Francisco Marques, 1771 - Jardim Sao Gabriel, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky1WzX1YbWvT2V7YIiM" : {
+      "id" : "-Ky1WzX1YbWvT2V7YIiM",
+      "latitude" : -20.52846250000001,
+      "longitude" : -47.42842578124997,
+      "nomeRua" : "Rua Francisco Marques, 1760 - Jardim Sao Gabriel, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1XAlym4yTdYhLyZgN" : {
+      "id" : "-Ky1XAlym4yTdYhLyZgN",
+      "latitude" : -20.5282075,
+      "longitude" : -47.42899609374997,
+      "nomeRua" : "Rua Francisco Marques, 1841 - Jardim Sao Gabriel, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1XHw8C4RWwpZsRFeK" : {
+      "id" : "-Ky1XHw8C4RWwpZsRFeK",
+      "latitude" : -20.5281575,
+      "longitude" : -47.42913671874997,
+      "nomeRua" : "Rua Francisco Marques, 1857 - Jardim Sao Gabriel, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky1Xujb68daXzaa-3pc" : {
+      "id" : "-Ky1Xujb68daXzaa-3pc",
+      "latitude" : -20.520082499999994,
+      "longitude" : -47.435871093750016,
+      "nomeRua" : "R. Alcina de Lima Silveira, 278 - Jardim das Palmeiras, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky1Y2A-hrOOlyQkPhbu" : {
+      "id" : "-Ky1Y2A-hrOOlyQkPhbu",
+      "latitude" : -20.520192499999986,
+      "longitude" : -47.43582421875001,
+      "nomeRua" : "R. Alcina de Lima Silveira, 230-278 - Jardim das Palmeiras, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky1Y78lra0FZqZHQ25p" : {
+      "id" : "-Ky1Y78lra0FZqZHQ25p",
+      "latitude" : -20.520122499999992,
+      "longitude" : -47.435839843749996,
+      "nomeRua" : "R. Alcina de Lima Silveira, 230-278 - Jardim das Palmeiras, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky2Uv9untrgqpoSIqPf" : {
+      "id" : "-Ky2Uv9untrgqpoSIqPf",
+      "latitude" : -20.544987499999998,
+      "longitude" : -47.42705078124998,
+      "nomeRua" : "Avenida Wilson Sábio de Mello, 1801-1845, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky2V1N89wrIVzCajV0p" : {
+      "id" : "-Ky2V1N89wrIVzCajV0p",
+      "latitude" : -20.545027499999996,
+      "longitude" : -47.42699609375,
+      "nomeRua" : "Avenida Wilson Sábio de Mello, 1845 - São Joaquim, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky2V83G3chy0qquS0qp" : {
+      "id" : "-Ky2V83G3chy0qquS0qp",
+      "latitude" : -20.54500249999999,
+      "longitude" : -47.42694921874999,
+      "nomeRua" : "Avenida Wilson Sábio de Mello, 1801-1845, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky2VDpHB_F4_bTqr41M" : {
+      "id" : "-Ky2VDpHB_F4_bTqr41M",
+      "latitude" : -20.544962500000004,
+      "longitude" : -47.42688671875,
+      "nomeRua" : "Avenida Wilson Sábio de Mello, 1801-1845, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky6Dse59U7fI1heLvl2" : {
+      "id" : "-Ky6Dse59U7fI1heLvl2",
+      "latitude" : -20.5342075,
+      "longitude" : -47.39908203124999,
+      "nomeRua" : "R. Campos Sáles, 2197-2275 - Centro, Franca - SP, 14400-710, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky6EeOmCRqZt1Y8Hu3l" : {
+      "id" : "-Ky6EeOmCRqZt1Y8Hu3l",
+      "latitude" : -20.534512499999984,
+      "longitude" : -47.39916015624998,
+      "nomeRua" : "R. Campos Sáles, 2167-2195 - Centro, Franca - SP, 14400-710, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6Eilo7SLdE6pmwFgm" : {
+      "id" : "-Ky6Eilo7SLdE6pmwFgm",
+      "latitude" : -20.534497499999993,
+      "longitude" : -47.39916796874998,
+      "nomeRua" : "R. Thomaz Gonzaga, 1570 - Centro, Franca - SP, 14400-540, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6Eqyg9x1n-hycH9VD" : {
+      "id" : "-Ky6Eqyg9x1n-hycH9VD",
+      "latitude" : -20.53440249999999,
+      "longitude" : -47.39922265624998,
+      "nomeRua" : "R. Thomaz Gonzaga, 1491-1559 - Vila Nicacio, Franca - SP, 14405-110, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6Fd9KZpKS-L9Y1tgS" : {
+      "id" : "-Ky6Fd9KZpKS-L9Y1tgS",
+      "latitude" : -20.534437499999992,
+      "longitude" : -47.39909765624999,
+      "nomeRua" : "R. Campos Sáles, 2210 - Centro, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6FirXVKkR-U9r5Bvx" : {
+      "id" : "-Ky6FirXVKkR-U9r5Bvx",
+      "latitude" : -20.534492499999992,
+      "longitude" : -47.39907421874999,
+      "nomeRua" : "R. Thomaz Gonzaga, 1561-1601 - Vila Nicacio, Franca - SP, 14405-110, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6HJghB6t-VNoKOb0S" : {
+      "id" : "-Ky6HJghB6t-VNoKOb0S",
+      "latitude" : -20.534227499999993,
+      "longitude" : -47.39989453125001,
+      "nomeRua" : "R. Maj. Claudiano, 2214-2314 - Centro, Franca - SP, 14400-690, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6HPjTnXdB32-IguRi" : {
+      "id" : "-Ky6HPjTnXdB32-IguRi",
+      "latitude" : -20.5341575,
+      "longitude" : -47.39991796874999,
+      "nomeRua" : "R. Maj. Claudiano, 2214-2314 - Centro, Franca - SP, 14400-690, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky6ITMlW9ScZR5JlKf6" : {
+      "id" : "-Ky6ITMlW9ScZR5JlKf6",
+      "latitude" : -20.5334875,
+      "longitude" : -47.39942578125,
+      "nomeRua" : "R. Tiradentes, 1500-1562 - Centro, Franca - SP, 14400-550, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky6IeCLQmIl_OI3FY50" : {
+      "id" : "-Ky6IeCLQmIl_OI3FY50",
+      "latitude" : -20.5335725,
+      "longitude" : -47.399019531250005,
+      "nomeRua" : "R. Tiradentes, 1500-1562 - Centro, Franca - SP, 14400-550, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky6JWC0y8Ll9N2N8UCz" : {
+      "id" : "-Ky6JWC0y8Ll9N2N8UCz",
+      "latitude" : -20.535037499999994,
+      "longitude" : -47.39673046874999,
+      "nomeRua" : "R. Thomaz Gonzaga, 1843 - Vila Nicacio, Franca - SP, 14405-110, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky6LSC6-geud-YqNjU2" : {
+      "id" : "-Ky6LSC6-geud-YqNjU2",
+      "latitude" : -20.53139749999999,
+      "longitude" : -47.39541796874998,
+      "nomeRua" : "Av. Pres. Vargas, 258 - Cidade Nova, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky6MflrwBIgREmnYXWg" : {
+      "id" : "-Ky6MflrwBIgREmnYXWg",
+      "latitude" : -20.528602499999998,
+      "longitude" : -47.39277734375002,
+      "nomeRua" : "Av. Pres. Vargas, 601-703 - Cidade Nova, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Ky6MmCXslqATOX3Bkpw" : {
+      "id" : "-Ky6MmCXslqATOX3Bkpw",
+      "latitude" : -20.528507499999996,
+      "longitude" : -47.392785156249985,
+      "nomeRua" : "Av. Pres. Vargas, 703 - Cidade Nova, Franca - SP, 14401-110, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    }
+  },
+  "reputacaolocal" : {
+    "-KwNKjMVR-97FP6oGXO2" : {
+      "BaYt6skevuhrNvNY9ahICUtmjbt2" : 5
+    },
+    "-KwYIaxHFb2T3KYwwwA6" : {
+      "BaYt6skevuhrNvNY9ahICUtmjbt2" : 5,
+      "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2" : 5
+    },
+    "-KxmRWLAT1LbixsOC4o-" : {
+      "BaYt6skevuhrNvNY9ahICUtmjbt2" : 5,
+      "y9UfU6M3kaeSvmvlJlatX2sJsEK2" : 5
+    },
+    "-KxmSVTwpcAUOa5TRI3g" : {
+      "BaYt6skevuhrNvNY9ahICUtmjbt2" : 5
+    }
+  },
+  "teste" : {
+    "-KvxtUBbz6qXXsNjXXmZ" : {
+      "id" : "-KvxtUBbz6qXXsNjXXmZ",
+      "latitude" : -20.505892499999995,
+      "longitude" : -47.44186328124997,
+      "nomeRua" : "Rod. Nelsom Nogueira, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-KvyfmTTRc_k74aWyHve" : {
+      "id" : "-KvyfmTTRc_k74aWyHve",
+      "latitude" : -20.3059625,
+      "longitude" : -47.58894921874999,
+      "nomeRua" : "R. Antonio Fernandes de Oliveira, 2-92, Jeriquara - SP, 14450-000, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-Kw7YheLQR08zhv87V6E" : {
+      "id" : "-Kw7YheLQR08zhv87V6E",
+      "latitude" : -20.56836249999999,
+      "longitude" : -47.403527343750014,
+      "nomeRua" : "Av. José Moisés Pereira, 1705 - Núcleo Agricola Alpha, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-KwNKjMVR-97FP6oGXO2" : {
+      "id" : "-KwNKjMVR-97FP6oGXO2",
+      "latitude" : -20.506517499999994,
+      "longitude" : -47.436675781249974,
+      "nomeRua" : "Artur Cândido de Oliveira, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-KwNKr2PbKLNrfmAGa7t" : {
+      "id" : "-KwNKr2PbKLNrfmAGa7t",
+      "latitude" : -20.50794249999999,
+      "longitude" : -47.440300781249974,
+      "nomeRua" : "Rua Noel de Paula, Franca - SP, Brasil",
+      "statusVaga" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2",
+      "tipoVaga" : 3
+    },
+    "-KwNQyK7S8tfoxibzoq6" : {
+      "id" : "-KwNQyK7S8tfoxibzoq6",
+      "latitude" : -20.532668599999997,
+      "longitude" : -47.3971594,
+      "nomeRua" : "Av. Pres. Vargas - Centro, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-KwYIaxHFb2T3KYwwwA6" : {
+      "id" : "-KwYIaxHFb2T3KYwwwA6",
+      "latitude" : -20.530252499999982,
+      "longitude" : -47.42000390624999,
+      "nomeRua" : "R. Dr. José Diniz Moreira, 1228 - Jardim California, Franca - SP, 14405-305, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-KxFISdGUXO8yjnxnGO8" : {
+      "id" : "-KxFISdGUXO8yjnxnGO8",
+      "latitude" : -20.5679675,
+      "longitude" : -47.400871093749984,
+      "nomeRua" : "Av. José Moisés Pereira, 557 - Jardim Alvorada, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-KxFI_ULBZt7YLNSnFKE" : {
+      "id" : "-KxFI_ULBZt7YLNSnFKE",
+      "latitude" : -20.56444249999999,
+      "longitude" : -47.40511328124999,
+      "nomeRua" : "R. Alfredo Tosi, 339-603 - Núcleo Agricola Alpha, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-KxFIgDpqtl6VEe2VCtY" : {
+      "id" : "-KxFIgDpqtl6VEe2VCtY",
+      "latitude" : -20.563767499999994,
+      "longitude" : -47.40244921874997,
+      "nomeRua" : "Av. dos Sapateiros, 1598-1602 - Núcleo Agricola Alpha, Franca - SP, 14403-183, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-KxFInJfxDWrARzu2umT" : {
+      "id" : "-KxFInJfxDWrARzu2umT",
+      "latitude" : -20.556052499999986,
+      "longitude" : -47.39759765625,
+      "nomeRua" : "R. José Augusto García, 349-511 - Prolongamento Jardim Lima, Franca - SP, 14403-090, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-KxFJ14Djn5AD7N4GZ5u" : {
+      "id" : "-KxFJ14Djn5AD7N4GZ5u",
+      "latitude" : -20.5636675,
+      "longitude" : -47.406824218749975,
+      "nomeRua" : "R. Alfredo Tosi, 340-604 - Núcleo Agricola Alpha, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-KxFJ81Qhar8DKGbPlxW" : {
+      "id" : "-KxFJ81Qhar8DKGbPlxW",
+      "latitude" : -20.5710975,
+      "longitude" : -47.40363671875001,
+      "nomeRua" : "R. Dr. Francisco Prestes Maia, 1121 - Parque Universitario, Franca - SP, 14404-608, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-KxFJEPZrZKw6SkOtMdC" : {
+      "id" : "-KxFJEPZrZKw6SkOtMdC",
+      "latitude" : -20.571267499999987,
+      "longitude" : -47.40569921875,
+      "nomeRua" : "R. Dr. Bernardino de Campos, 1195-1311 - Parque Universitario, Franca - SP, 14404-611, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-KxFJLLOBBhm6n0oj2Om" : {
+      "id" : "-KxFJLLOBBhm6n0oj2Om",
+      "latitude" : -20.57012249999999,
+      "longitude" : -47.40607421874999,
+      "nomeRua" : "Av. Dr. Armando de Sáles Oliveira, 89-171 - Parque Universitario, Franca - SP, 14404-600, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 2
+    },
+    "-KxFJQ7HvV1_UCLUppjE" : {
+      "id" : "-KxFJQ7HvV1_UCLUppjE",
+      "latitude" : -20.57260249999998,
+      "longitude" : -47.40765234375,
+      "nomeRua" : "Av. Dr. Armando de Sáles Oliveira, 541 - Parque Universitario, Franca - SP, 14404-600, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-KxmRWLAT1LbixsOC4o-" : {
+      "id" : "-KxmRWLAT1LbixsOC4o-",
+      "latitude" : -20.54536249999999,
+      "longitude" : -47.428582031249974,
+      "nomeRua" : "Avenida Wilson Sábio de Mello, 1880 - São Joaquim, Franca - SP, Brasil",
+      "statusVaga" : "y9UfU6M3kaeSvmvlJlatX2sJsEK2",
+      "tipoVaga" : 2
+    },
+    "-KxmSVTwpcAUOa5TRI3g" : {
+      "id" : "-KxmSVTwpcAUOa5TRI3g",
+      "latitude" : -20.5483475,
+      "longitude" : -47.42973046874999,
+      "nomeRua" : "R. Élvio Puci, 301, Franca - SP, 14406-785, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 1
+    },
+    "-Ky23PCBNXGRrk4GAFaU" : {
+      "id" : "-Ky23PCBNXGRrk4GAFaU",
+      "latitude" : -20.512377499999992,
+      "longitude" : -47.43239453124998,
+      "nomeRua" : "Av. Francisco Ermando Pulicano, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    },
+    "-Ky29RMky5Txbqey37xK" : {
+      "id" : "-Ky29RMky5Txbqey37xK",
+      "latitude" : -20.508642499999986,
+      "longitude" : -47.43959765625,
+      "nomeRua" : "R. Itagino da Cruz Andrade - Res. Palermo, Franca - SP, Brasil",
+      "statusVaga" : "Disponivel",
+      "tipoVaga" : 3
+    }
+  },
+  "usuarios" : {
+    "9iPrxdTvnAZ997k4LXyr3Ls0kL72" : {
+      "email" : "projetomobile17@gmail.com",
+      "idUsuario" : "9iPrxdTvnAZ997k4LXyr3Ls0kL72",
+      "nome" : "mobiletcc tcc",
+      "urlPhto" : "https://lh3.googleusercontent.com/-Pd-fZH8Cgsg/AAAAAAAAAAI/AAAAAAAAAAw/x5p3gqF0zL0/s96-c/photo.jpg"
+    },
+    "BaYt6skevuhrNvNY9ahICUtmjbt2" : {
+      "email" : "allefsousa_1@hotmail.com",
+      "idUsuario" : "BaYt6skevuhrNvNY9ahICUtmjbt2",
+      "nome" : "Allef Sousa",
+      "urlPhto" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/16508024_1498029830237643_5355851663823223528_n.jpg?oh=bc447e3c91b583e93eeff41a8b681601&oe=5A88511C"
+    },
+    "MXqQF4mWpoagJky6vVRyZ5SkgPi2" : {
+      "email" : "",
+      "idUsuario" : "MXqQF4mWpoagJky6vVRyZ5SkgPi2",
+      "nome" : "Wesley Gonçalves",
+      "urlPhto" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/20882318_1305159182928827_3358979431232051667_n.jpg?oh=8ba1a10fad16a6016a505d4403214757&oe=5A76E02C"
+    },
+    "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2" : {
+      "email" : "allefsousa1@gmail.com",
+      "idUsuario" : "bxLLbBPom7bCaQ4KBrCHPq7mMkJ2",
+      "nome" : "Allef Sousa",
+      "urlPhto" : "https://lh3.googleusercontent.com/-V8WHkoW-ePo/AAAAAAAAAAI/AAAAAAAAB6U/J_8P0VGKqno/s96-c/photo.jpg"
+    },
+    "eC3VyJOqwOdoxcprXnRhk6Evy7B2" : {
+      "email" : "rafaelzinhogomes22@live.com",
+      "idUsuario" : "eC3VyJOqwOdoxcprXnRhk6Evy7B2",
+      "nome" : "Rafael Gomes",
+      "urlPhto" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/21558816_1570250963038258_20647525674583866_n.jpg?oh=70679e311d6a31cf781deeea4934cbe5&oe=5A75CA6A"
+    },
+    "hogcPoOikWZwfMbP3aVe2i9qknA2" : {
+      "email" : "brunacaroline14@hotmail.com",
+      "idUsuario" : "hogcPoOikWZwfMbP3aVe2i9qknA2",
+      "nome" : "Bruna Mendes",
+      "urlPhto" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/21430357_1379663515480030_2270495762719789976_n.jpg?oh=069911f0aa0e8da1bb9c485ce9b45d93&oe=5A739D08"
+    },
+    "xS9GlS8yPbZgf5q2wJhYluV7vJi1" : {
+      "email" : "rafael.gcaldas01@gmail.com",
+      "idUsuario" : "xS9GlS8yPbZgf5q2wJhYluV7vJi1",
+      "nome" : "Rafael Gomes",
+      "urlPhto" : "https://lh4.googleusercontent.com/-pz4RqkjQTTA/AAAAAAAAAAI/AAAAAAAADfQ/EAmZDqaYKSI/s96-c/photo.jpg"
+    },
+    "y9UfU6M3kaeSvmvlJlatX2sJsEK2" : {
+      "email" : "",
+      "idUsuario" : "y9UfU6M3kaeSvmvlJlatX2sJsEK2",
+      "nome" : ""
+    }
+  }
+}

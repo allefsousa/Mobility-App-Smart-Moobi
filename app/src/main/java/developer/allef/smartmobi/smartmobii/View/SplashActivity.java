@@ -10,9 +10,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.perf.FirebasePerformance;
@@ -21,26 +18,22 @@ import com.google.firebase.perf.metrics.Trace;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import developer.allef.smartmobi.smartmobii.Interfaces.SplashInterface;
 import developer.allef.smartmobi.smartmobii.R;
 
 
 public class SplashActivity extends AppCompatActivity {
     Thread splashTread;
-    private FirebaseAuth firebaseAuth;
     @BindView(R.id.rel)
     RelativeLayout re;
     @BindView(R.id.titlesplash)
     TextView sph;
-
     @BindView(R.id.imageViewlogo)
-            ImageView logo;
-
-
+    ImageView logo;
     FirebaseUser firebaseUser;
-    private FirebaseAuth.AuthStateListener authStateListener;
     @BindView(R.id.sph)
     ImageView ima;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     // instancia do Firebase Performase
     @Override
@@ -66,10 +59,7 @@ public class SplashActivity extends AppCompatActivity {
         sph.setTypeface(typeface);
 
 
-//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);// INSTANCIA DO FIREBASE PARA FUNCIONAR OFFLINE
-//        DatabaseReference scoresRef = FirebaseDatabase.getInstance().getReference("teste");
-//        scoresRef.keepSynced(true);
-        // exibindo a performance desta parte do app no firebase
+
         Trace myTrace = FirebasePerformance.getInstance().newTrace("trace_Splash_TEMPO");
         myTrace.start();
 
@@ -86,7 +76,6 @@ public class SplashActivity extends AppCompatActivity {
         };
 
         startAnimation();
-
 
 
     }
@@ -116,11 +105,11 @@ public class SplashActivity extends AppCompatActivity {
                      */
                     if (firebaseUser != null) {
                         Intent i = new Intent(SplashActivity.this, MenuActivity.class); // TODO: 12/07/2017 preciso encontrar uma forma da animação para para nao pular a permisão do GPs pode ser considerado mudar a validação para a classe de login
-                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION );
+                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(i);
                     } else {
                         Intent i = new Intent(SplashActivity.this, Sing_in.class); // TODO: 12/07/2017 preciso encontrar uma forma da animação para para nao pular a permisão do GPs pode ser considerado mudar a validação para a classe de login
-                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION );
+                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(i);
                     }
 
@@ -150,7 +139,6 @@ public class SplashActivity extends AppCompatActivity {
         firebaseAuth.addAuthStateListener(authStateListener);
 
 
-
     }
 
     @Override
@@ -167,7 +155,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onPause();
         firebaseAuth.removeAuthStateListener(authStateListener);
     }
-
 
 
 }

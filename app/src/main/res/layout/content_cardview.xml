@@ -147,7 +147,7 @@
                             android:id="@+id/switch1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:textOff="No"
                             android:textOn="Yes"
                             android:text="Status Da Vaga : "
@@ -172,7 +172,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/primary_text"
                     android:textStyle="bold"
                     android:gravity="center"
@@ -202,7 +202,7 @@
                             android:id="@+id/media"
                             android:layout_marginLeft="60dp"
                             android:textColor="@color/primary_text"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:text="Media"
                             android:layout_height="wrap_content" />
                         <TextView
@@ -210,7 +210,8 @@
                             android:id="@+id/ratinreputacao"
                             android:layout_marginLeft="70dp"
                             android:text="8"
-                            android:textSize="20dp"
+                            android:paddingRight="05dp"
+                            android:textSize="20sp"
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>

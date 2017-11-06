@@ -16,7 +16,7 @@
             android:id="@+id/the_awesome_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/primary_text"
+            android:background="@color/primaryColor"
             android:visibility="invisible">
 
                 <LinearLayout
@@ -34,7 +34,7 @@
                         android:textStyle="bold"
                         android:textSize="30sp"
                         android:textAlignment="center"
-                        android:text="Filtro"/>
+                        android:text="Filtrar Vagas"/>
 
 
                     <CheckBox
@@ -76,6 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:textColor="@color/primaryColor"
                         android:gravity="center"
                         android:background="@drawable/cantosrendondos"
                         android:padding="10dp"

@@ -2,24 +2,21 @@ package developer.allef.smartmobi.smartmobii.View;
 
 import android.Manifest;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import agency.tango.materialintroscreen.MaterialIntroActivity;
-import agency.tango.materialintroscreen.MessageButtonBehaviour;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
 import agency.tango.materialintroscreen.animations.IViewTranslation;
-import developer.allef.smartmobi.smartmobii.Helper.Preferencias;
 import developer.allef.smartmobi.smartmobii.R;
 
 /**
  * Created by allef on 15/07/2017.
  */
 
-public class IntroActivity extends MaterialIntroActivity {
+public class IntroducaoActivity extends MaterialIntroActivity {
     private String[] arrayPer = new String[]{
             Manifest.permission.INTERNET,
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -80,23 +77,16 @@ public class IntroActivity extends MaterialIntroActivity {
 
 
 
-        addSlide(new SlideFragmentBuilder()
-                .backgroundColor(R.color.primaryColor)
-                .buttonsColor(R.color.introIdosoBacgraund)
-                .possiblePermissions(arrayPer)
-                .neededPermissions(arrayPer)
-                .title("Permisões")
-                .description("Para Um melhor desempenho é necessarios habilitar alguns recursos do dispositivo.")
-                .build());
+
 
 
     }
-    @Override
-    public void onFinish() {
-        super.onFinish();
-        startActivity(new Intent(IntroActivity.this, MenuActivity.class));
-
-    }
+//    @Override
+//    public void onFinish() {
+//        super.onFinish();
+//        startActivity(new Intent(IntroducaoActivity.this, MenuActivity.class));
+//
+//    }
 
 
 }

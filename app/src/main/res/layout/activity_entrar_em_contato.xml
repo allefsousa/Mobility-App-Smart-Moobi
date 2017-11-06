@@ -10,7 +10,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:id="@+id/ipnNomee"
+        android:id="@+id/inpNomee"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp">
 
@@ -24,7 +24,7 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ipnNomee"
+        android:layout_below="@id/inpNomee"
         android:id="@+id/inpEmaiil"
         android:layout_marginTop="20dp">
 
@@ -59,9 +59,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/inpmens"
         android:layout_marginTop="10dp"
+        android:textColor="@color/Branco"
         android:paddingLeft="10dp"
-        android:background="@color/colorAccent"
-        android:drawableLeft="@drawable/ic_email"
+        android:background="@color/primaryColor"
+        android:drawableLeft="@drawable/ic_emailbranco"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Enviar" />

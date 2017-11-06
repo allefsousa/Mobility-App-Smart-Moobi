@@ -1,6 +1,5 @@
 package developer.allef.smartmobi.smartmobii.View;
 
-import android.Manifest;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,10 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookAuthorizationException;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
@@ -25,7 +22,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,8 +32,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.w3c.dom.Text;
-
 import java.util.Arrays;
 
 import butterknife.BindView;
@@ -47,10 +41,7 @@ import developer.allef.smartmobi.smartmobii.R;
 
 public class Sing_in extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    private FirebaseAuth firebaseAuth;
-    private GoogleApiClient mGoogleapi;
     public static final int SING_IN_CODE = 777;
-
     @BindView(R.id.btnsms)
     Button loginsms;
     @BindView(R.id.btnfacebook)
@@ -59,16 +50,11 @@ public class Sing_in extends AppCompatActivity implements GoogleApiClient.OnConn
     TextView titulo;
     @BindView(R.id.nomeapp)
     TextView nome;
-
     @BindView(R.id.googlebutton)
     Button gmaillogin;
-    @BindView(R.id.criarconta)
-            TextView criaar;
-
-
-
     AuthCredential authCredential;
-
+    private FirebaseAuth firebaseAuth;
+    private GoogleApiClient mGoogleapi;
     private CallbackManager callbackManager;
     private FirebaseAuth.AuthStateListener authStateListener;
 
@@ -96,11 +82,9 @@ public class Sing_in extends AppCompatActivity implements GoogleApiClient.OnConn
          *
          */
         mGoogleapi = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,signInOptions)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions)
                 .build();
-
-
 
 
         /**
@@ -134,7 +118,7 @@ public class Sing_in extends AppCompatActivity implements GoogleApiClient.OnConn
             public void onClick(View v) {
                 //intent para abrir activity para selecionar a conta google a ser usada.
                 Intent intent = Auth.GoogleSignInApi.getSignInIntent(mGoogleapi);
-                startActivityForResult(intent,SING_IN_CODE);
+                startActivityForResult(intent, SING_IN_CODE);
             }
         });
 
@@ -151,33 +135,37 @@ public class Sing_in extends AppCompatActivity implements GoogleApiClient.OnConn
          */
         callbackManager = CallbackManager.Factory.create();
         // chamada de calBack para buscar o token do facebook
-LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback< LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                handlerFacebookToken(loginResult); // metodo para fazer o login no firebase
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        handlerFacebookToken(loginResult); // metodo para fazer o login no firebase
 
-            }
+                    }
 
-            @Override
-            public void onCancel() {
-                Snackbar.make(findViewById(android.R.id.content), "Erro na Autenticação",
-                        Snackbar.LENGTH_LONG).show();
-            }
+                    @Override
+                    public void onCancel() {
+                        Snackbar.make(findViewById(android.R.id.content), "Erro na Autenticação",
+                                Snackbar.LENGTH_LONG).show();
+                    }
 
-            @Override
-            public void onError(FacebookException error) {
-
-
-                // TODO: 29/08/2017 tratar exception de erros api facebook 
-                
-                Snackbar.make(findViewById(android.R.id.content), "Falha na Autenticação" +error.getMessage(),
-                        Snackbar.LENGTH_LONG).show();
-            }
-
-        }
+                    @Override
+                    public void onError(FacebookException error) {
+                        if(error instanceof FacebookAuthorizationException ){
 
 
-    );
+                        }
+
+
+                        // TODO: 29/08/2017 tratar exception de erros api facebook
+
+                        Snackbar.make(findViewById(android.R.id.content), "Falha na Autenticação" + error.getMessage(),
+                                Snackbar.LENGTH_LONG).show();
+                    }
+
+                }
+
+
+        );
 
 
         /**
@@ -188,7 +176,7 @@ LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallbac
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                if(firebaseUser != null){
+                if (firebaseUser != null) {
                     AuthSucess();
 //
                 }
@@ -196,28 +184,10 @@ LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallbac
         };
 
 
-
-
-
         loginsms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Sing_in.this,PhoneAuthActivity.class));
-                finish();
-            }
-        });
-
-//        loginemail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-
-        criaar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Sing_in.this,EmailLogin.class));
+                startActivity(new Intent(Sing_in.this, PhoneAuthActivity.class));
                 finish();
             }
         });
@@ -225,35 +195,33 @@ LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallbac
     }
 
     private void SingInFirebase(AuthCredential cred) {
-        firebaseAuth.signInWithCredential(cred).addOnCompleteListener(Sing_in.this,new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithCredential(cred).addOnCompleteListener(Sing_in.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Snackbar.make(findViewById(android.R.id.content), "Login Realizado Com Sucesso",
                             Snackbar.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(Sing_in.this, " erro"+   task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Sing_in.this, " erro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
-
 
 
             }
         });
 
-            }
+    }
 
 
     private void AuthSucess() {
-        Intent i = new Intent(Sing_in.this,IntroActivity.class);
+        Intent i = new Intent(Sing_in.this, IntroActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
         finish();
     }
 
     /**
-     *
      * @param loginResult
      */
     private void handlerFacebookToken(LoginResult loginResult) {
@@ -264,10 +232,10 @@ LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallbac
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,resultCode,data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
 
         // verificando  o codigo recebido do GoogleSing
-        if(requestCode == SING_IN_CODE ){
+        if (requestCode == SING_IN_CODE) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handlerGoogleSingResult(result);
         }
@@ -275,23 +243,23 @@ LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallbac
 
     /**
      * metodo responsavel por determinar oque sera feito com o resultado do login
+     *
      * @param result
      */
     private void handlerGoogleSingResult(GoogleSignInResult result) {
-        if (result.isSuccess()){
-            //startActivity(new Intent(Sing_in.this, TestSingInGoogle.class));
-            //AuthSucess();
+        if (result.isSuccess()) {
+
             firebaseAuthsignInGoogle(result.getSignInAccount());
 
-        }else {
-            Toast.makeText(Sing_in.this,"Falha ao Iniciar Sessão", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(Sing_in.this, "Falha ao Iniciar Sessão", Toast.LENGTH_LONG).show();
 
         }
     }
 
     private void firebaseAuthsignInGoogle(GoogleSignInAccount signInAccount) {
 
-        AuthCredential credential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(),null);
+        AuthCredential credential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
         SingInFirebase(credential);
     }
 
@@ -299,9 +267,6 @@ LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallbac
     protected void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(authStateListener);
-
-
-
 
 
     }
