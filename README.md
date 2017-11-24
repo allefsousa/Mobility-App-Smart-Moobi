@@ -1,3 +1,3 @@
-# TrabalhoGraduacao
+# Trabalho de Graduacao
 Aplicativo movel tem a função de auxiliar pessoas com necessidades especias exibindo  vagas preferenciais e busca  melhorar a locomoção e logo a mobilidade urbana
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![Tela Inicial do app](https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/src/main/res/drawable/openapp.png)
