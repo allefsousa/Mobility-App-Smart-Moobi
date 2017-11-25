@@ -2,4 +2,4 @@
 Aplicativo movel tem a função de auxiliar pessoas com **necessidades especias** exibindo  vagas preferenciais e busca  melhorar a locomoção e logo a mobilidade urbana.
 
 ![Tela Inicial do app](https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png =150x)
-<img src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png" width="400" height="790"/>
+<img src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png" href="##" width="400" height="790"/>
