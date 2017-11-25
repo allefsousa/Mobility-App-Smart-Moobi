@@ -11,7 +11,7 @@ Aplicativo movel tem a função de auxiliar pessoas com **necessidades especias*
     <td><img src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png" data-canonical-src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png" width="350" height="400" /></td>
    
    <td>
- <img src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/src/main/res/drawable/openapp.png" data-canonical-src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/src/main/res/drawable/openapp.png" width="350" height="400" />
+ <img src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/src/main/res/drawable/n.png" data-canonical-src="https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/src/main/res/drawable/n.png" width="350" height="400" />
    
    </td>
   </tr>
