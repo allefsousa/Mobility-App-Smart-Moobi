@@ -3,4 +3,4 @@ Aplicativo movel tem a função de auxiliar pessoas com **necessidades especias*
 
 ![Tela Inicial do app](https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png =150x)
 
-<img src="(https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png" width="200" height="400" />
+<img src="(https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png" width="500" height="500" />
