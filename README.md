@@ -18,9 +18,9 @@ Aplicativo movel tem a função de auxiliar pessoas com **necessidades especias*
   
   <tr>
  <td>
- 
+ <img src="https://duo.google.com/images/store-badges/play/pt-BR_badge_web_generic.png" data-canonical-src="https://duo.google.com/images/store-badges/play/pt-BR_badge_web_generic.png" width="300" height="100" />
  </td>
- <img src="https://duo.google.com/images/store-badges/play/pt-BR_badge_web_generic.png" data-canonical-src="https://duo.google.com/images/store-badges/play/pt-BR_badge_web_generic.png" width="300" height="150" />
+ 
  <td>
   https://play.google.com/store/apps/details?id=developer.allef.smartmobi.smartmobii 
  </td>
