@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.github.jaouan:revealator-1.2.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/2c157f918b9ea15b49d4aaf59e218489911e78d8/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/2c157f918b9ea15b49d4aaf59e218489911e78d8/output/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/revealator-1.2.1.aar/1d9c30645638cfd7a8dfe64c71691957/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/revealator-1.2.1.aar/1d9c30645638cfd7a8dfe64c71691957/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

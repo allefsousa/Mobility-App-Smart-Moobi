@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.iarcuschin:simpleratingbar-0.1.5">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/052be2d9fd202df28b93ccf1a97d5be869756180/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/052be2d9fd202df28b93ccf1a97d5be869756180/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/simpleratingbar-0.1.5.aar/be6d00bf418db9b5263762dcf1fe9107/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/simpleratingbar-0.1.5.aar/be6d00bf418db9b5263762dcf1fe9107/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
