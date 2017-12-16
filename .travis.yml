@@ -1,23 +1,15 @@
 language: android
-jdk: oraclejdk8
 android:
   components:
-      - tools
-      - platform-tools
-      - build-tools-24.0.3
-      - android-24
-      - extra-android-m2repository
-      - extra-google-m2repository
-      - extra-android-support
-      - extra-google-google_play_services
-  licenses:
-      - android-sdk-preview-license-.+
-      - android-sdk-license-.+
-      - google-gdk-license-.+
-
-before_install:
-  - echo yes | android update sdk --all --filter build-tools-24.0.1 --no-ui --force
-
+    - tools
+    - platform-tools
+    - build-tools-24.0.3
+    - android-24
+    - extra-android-m2repository
+    - extra-google-m2repository
+    - extra-android-support
+    - extra-google-google_play_services
+jdk:
+  - oraclejdk8
 script:
-    - echo "Travis branch is $TRAVIS_BRANCH"
-    - ./gradlew clean test
+  - ./gradlew test
