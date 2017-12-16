@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.github.jaouan:revealator-1.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/2c157f918b9ea15b49d4aaf59e218489911e78d8/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/2c157f918b9ea15b49d4aaf59e218489911e78d8/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
