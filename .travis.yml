@@ -9,7 +9,9 @@ android:
     - extra-android-m2repository
 
   licenses:
-    - android-sdk-license-.+
+      - android-sdk-preview-license-.+
+      - android-sdk-license-.+
+      - google-gdk-license-.+
 
 before_install:
   - echo yes | android update sdk --all --filter build-tools-24.0.1 --no-ui --force
