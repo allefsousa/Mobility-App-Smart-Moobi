@@ -1,4 +1,4 @@
-package developer.allef.smartmobi.smartmobii.Model;
+package developer.allef.smartmobi.smartmobii.Helper;
 
 /**
  * Created by allef on 29/10/2017.

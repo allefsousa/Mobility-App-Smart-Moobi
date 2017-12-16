@@ -15,8 +15,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import developer.allef.smartmobi.smartmobii.Model.Config;
-
 /**
  * Created by allef on 29/10/2017.
  */
