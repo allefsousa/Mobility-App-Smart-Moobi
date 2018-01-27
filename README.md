@@ -1,4 +1,9 @@
+.. image:: https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg
+    :target: https://github.com/mozilla/addons-server/blob/master/CODE_OF_CONDUCT.md
+    :alt: Code of conduct
+
 # Trabalho de Graduação Ciência da computação
+    
 Aplicativo movel tem a função de auxiliar pessoas com **necessidades especias** exibindo  vagas preferenciais e busca  melhorar a locomoção e logo a mobilidade urbana.
 
  <!-- ![Tela Inicial do app](https://github.com/allefsousa/TrabalhoGraduacao/blob/master/app/gitfoi.png)-->
