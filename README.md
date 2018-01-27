@@ -1,8 +1,8 @@
 [![GitHub top language](https://img.shields.io/badge/language-Java-ff0000.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
  [![CocoaPods](https://img.shields.io/cocoapods/p/AFNetworking.svg)](https://www.youtube.com/embed/jI-kpVh6e1U?autoplay=1)
- [![GitHub issue age](https://img.shields.io/github/issues/detail/age/badges/shields/979.svg)]()
- [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)]()
+ [![GitHub issue age](https://img.shields.io/github/issues/detail/age/badges/shields/979.svg)](#)
+ [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)](#)
 
 
 # Trabalho de Graduação Ciência da computação
