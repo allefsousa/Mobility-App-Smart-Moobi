@@ -1,6 +1,5 @@
 [![GitHub top language](https://img.shields.io/badge/language-Java-ff0000.svg)]()
-[![GitHub language count](https://img.shields.io/github/languages/count/badges/shields.svg)]()
-[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]()
+
 
 
 
