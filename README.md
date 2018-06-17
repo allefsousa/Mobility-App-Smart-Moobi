@@ -1,4 +1,4 @@
-[![GitHub top language](https://img.shields.io/badge/language-Java-ff0000.svg)]()
+[![GitHub top language](https://img.shields.io/badge/Language-Java-ff0000.svg)]()  [![GitHub top language](https://img.shields.io/badge/Firebase-Database-orange.svg)]() [![GitHub top language](https://img.shields.io/badge/Google%20-Maps-blue.svg)]()
 
 
 
