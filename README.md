@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/febf38a55995435e964f6ec80135eecd)](https://app.codacy.com/app/allefsousa/SmartMobi?utm_source=github.com&utm_medium=referral&utm_content=allefsousa/SmartMobi&utm_campaign=Badge_Grade_Dashboard)
 [![GitHub top language](https://img.shields.io/badge/Language-Java-ff0000.svg)]()  [![GitHub top language](https://img.shields.io/badge/Firebase-Database-orange.svg)]() [![GitHub top language](https://img.shields.io/badge/Google%20-Maps-blue.svg)]()
 
 
